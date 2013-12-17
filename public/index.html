@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Hiking Food</title>
+    <script src="components/requirejs/require.js" data-main="js/main.js"></script>
+    <link type="text/css" href="css/style.css" rel="stylesheet"/>
+    <link type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+
+<body>
+<h1>{{"welcome"|localize}}</h1>
+<span lang></span>
+
+<div class="left-bar">
+    <ul>
+        <li><a href="/#/">{{"products"|localize}}</a></li>
+        <li><a href="/#/">{{"recipes"|localize}}</a></li>
+    </ul>
+</div>
+<div class="right-bar">
+    <p>Some info here</p>
+</div>
+<div class="main-bar">
+    <div ng-view/>
+</div>
+</body>
+</html>

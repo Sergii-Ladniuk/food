@@ -1,0 +1,56 @@
+<h3>{{"Edit Product"|localize}} <span class="item-title">{{product.title}}</span></h3>
+<form name="editProductForm" ng-submit="save()">
+    <div class="control-group">
+        <label class="control-label" for="title">{{"title"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.title" class="input-xlarge" id="title" focus required>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="description">{{"description"|localize}}:</label>
+        <div class="controls">
+            <textarea ng-model="product.description" class="input-xlarge" id="description" required></textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="calories">{{"calories"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.calories" class="input-xlarge" id="calories" required/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="proteins">{{"proteins"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.proteins" class="input-xlarge" id="proteins" required/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="fats">{{"fats"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.fats" class="input-xlarge" id="fats" required/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="fats">{{"carbs"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.carbs" class="input-xlarge" id="carbs" required/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="portion">{{"portion"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.portion" class="input-xlarge" id="portion"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="portion_unit">{{"unit"|localize}}:</label>
+        <div class="controls">
+            <input ng-model="product.portion_unit" class="input-xlarge" id="portion_unit"/>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-primary" ng-disabled="editProductForm.$invalid">{{"save"|localize}}</button>
+        <button type="button" ng-click="remove()" ng-show="product._id" class="btn">{{"remove"|localize}}</button>
+        <button type="button" ng-click="cancel()" class="btn">{{"cancel"|localize}}</button>
+    </div>
+</form>

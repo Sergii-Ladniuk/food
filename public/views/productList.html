@@ -1,0 +1,35 @@
+<a class="button" ng-href="/#/newProduct">{{"New Product"|localize}}</a>
+<ul class="main-list">
+    <li ng-repeat="product in products">
+        <div>
+            <h4>{{product.title}}</h4>
+            <div class="descr">{{product.description}}</div>
+            <div class="details">
+                <table>
+                    <tr>
+                        <td>{{"calories"|localize}}:</td>
+                        <td>{{product.calories}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{"proteins"|localize}}:</td>
+                        <td>{{product.proteins}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{"fats"|localize}}:</td>
+                        <td>{{product.fats}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{"carbs"|localize}}:</td>
+                        <td>{{product.carbs}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{"portion"|localize}}:</td>
+                        <td>{{product.portion}} {{product.portion_unit}}</td>
+                    </tr>
+                </table>
+            </div>
+            <a class="button" ng-href="/#/editProduct/{{product._id}}">{{"edit"|localize}}</a>
+            <a class="button" ng-href="/#/removeProduct/{{product._id}}">{{"remove"|localize}}</a>
+        </div>
+    </li>
+</ul>
