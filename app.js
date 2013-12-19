@@ -8,7 +8,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
-var products = require('./routes/products')
+var products = require('./api/ProductResource')
 
 var app = express();
 
@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.post('/products', products.add);
+app.post('/products', products.save);
 app.get('/products', products.list);
 app.get('/products/:id', products.get);
 app.delete('/products/:id', products.remove);

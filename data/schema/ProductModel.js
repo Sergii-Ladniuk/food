@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/food');
+var mongoose = require('./DB.js').mangoose;
 
 var productSchema = mongoose.Schema({
     title: {type: String, required: true}
