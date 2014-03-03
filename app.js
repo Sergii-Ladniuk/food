@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -11,6 +10,8 @@ var mongoose = require('mongoose');
 var products = require('./api/ProductResource')
 
 var app = express();
+
+module.exports = app;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
 app.post('/products', products.save);
@@ -35,6 +36,6 @@ app.get('/products', products.list);
 app.get('/products/:id', products.get);
 app.delete('/products/:id', products.remove);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
 });

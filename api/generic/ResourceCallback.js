@@ -27,7 +27,7 @@ exports.Callbacks = {
                         response.send({ status: 'ok' });
                     } else {
                         response.status = 404;
-                        response.send('Product not found.');
+                        response.send({ status: 'fail' });
                     }
                 }
             }
