@@ -11,10 +11,24 @@ define(['./module', '../app'], function (controllers) {
             };
         })
         .controller('NewProductController', function ($scope, $location, Product) {
+            $scope.alerts = [];
+            $scope.addAlert = function(msg) {
+                $scope.alerts.push({msg: msg, type: 'danger'});
+            };
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
+
             $scope.product = new Product();
             $scope.save = function () {
-                $scope.product.$save(function (product) {
-                    $location.path('/');
+                $scope.product.$save(function (response) {
+                    if (response.status !== 'ok') {
+                        $scope.addAlert('Internal server error.');
+                    } else {
+                        $location.path('/');
+                    }
+                }, function(error) {
+                    alert('Internal server error. ' + error);
                 });
             };
             $scope.cancel = function () {
@@ -24,8 +38,10 @@ define(['./module', '../app'], function (controllers) {
         .controller('EditProductController', function ($scope, $location, product) {
             $scope.product = product;
             $scope.save = function () {
-                $scope.product.$save(function (product) {
+                $scope.product.$save(function (response) {
                     $location.path('/');
+                }, function(error) {
+                    alert('Internal server error. ' + error);
                 });
             };
             $scope.cancel = function () {

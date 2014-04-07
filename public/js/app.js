@@ -3,8 +3,9 @@ define(
         'angular',
         './services/index',
         './controllers/index',
-        './localization/localization'
+        './localization/localization',
+        'ui.bootstrap'
     ], function (ng) {
-        return ng.module('hiking_food', ['hiking_food.services', 'hiking_food.controllers', 'localization']);
+        return ng.module('hiking_food', ['hiking_food.services', 'hiking_food.controllers', 'localization', 'ui.bootstrap']);
     }
 );

@@ -11,6 +11,7 @@
         "angular-resource": "~1.0.8",
         "angular-scenario": "~1.0.8",
         "requirejs": "~2.1.8",
-        "requirejs-domready": "~2.0.1"
+        "requirejs-domready": "~2.0.1",
+        "bootstrap": "3.0.3"
     }
 }

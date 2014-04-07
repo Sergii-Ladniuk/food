@@ -11,6 +11,9 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "recipes": {
                 "en": "Recipes",
                 "ru": "Рецепты"
+            }, "home": {
+                "en": "Home",
+                "ru": "Главная"
             }, "edit": {
                 "en": "Edit",
                 "ru": "Править"

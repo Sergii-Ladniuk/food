@@ -29,6 +29,21 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "Delete Product Warning": {
                 "en": "Do you really want to remove the product",
                 "ru": "Вы действительно хотите удалить продукт"
+            }, "Product Name Help Block": {
+                "en": "Name of product should be meaningful and unique within the system.",
+                "ru": "Имя продукта должно быть понятным и уникальным в рамках данной системы."
+            }, "Portion Help Block": {
+                "en": "A portion of the product, which contains the specified number of calories, proteins, etc. Units are specified next.",
+                "ru": "Размер порции, которая содержит указанное выше количество калорий, протеинов. Единица измерения будет указана далее."
+            }, "Portion Unit Help Block": {
+                "en": "A unit to measure a portion. E.g. gram, litres, items",
+                "ru": "Единица измерения порции. Например, грамм, литр, штука."
+            }, "Product Description Placeholder": {
+                "en": "Provide some information about the product...",
+                "ru": "Предоставьте, пожалуйста, информацию о данном продукте..."
+            }, "Per 100g": {
+                "en": "Nutrition Facts per 100g",
+                "ru": "Пищевая ценность на 100 грамм"
             }
         }
     });

@@ -1,17 +1,16 @@
 body {
     padding: 20px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
     background-color: #fefefe;
-
 }
 
 a {
     color: #0000FF;
 }
 
-h3 {
-    background-color: #cccccc;
+#editProductForm-header{
     display: block;
+    margin-bottom: 30px;
 }
 
 a.button {
@@ -76,6 +75,10 @@ div.right-bar {
 
 div.descr {
     padding: 10px 0px 10px 0px;
+}
+
+.details table {
+    font-size: 14;
 }
 
 div.control-group {
@@ -169,5 +172,19 @@ input.ng-invalid {
 }
 
 .main-container {
-    background-color: #cccccc;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.alert-messages {
+    position: fixed;
+    top: 47px;
+    left: 0;
+    right: 0;
+    z-index: 7000;
+}
+
+div > textarea.description {
+    height: 140px;
 }

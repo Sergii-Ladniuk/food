@@ -15,8 +15,6 @@ var EditProductPage = {
             proteins: element(by.model('product.proteins')),
             fats: element(by.model('product.fats')),
             carbs: element(by.model('product.carbs')),
-            portion: element(by.model('product.portion')),
-            portion_unit: element(by.model('product.portion_unit')),
             saveProduct: element(by.id('save-product')),
             dummyFill: function () {
                 this.title.sendKeys(productName);
@@ -25,8 +23,6 @@ var EditProductPage = {
                 this.proteins.sendKeys('2345');
                 this.fats.sendKeys('123');
                 this.carbs.sendKeys('456');
-                this.portion.sendKeys('100');
-                this.portion_unit.sendKeys('litres');
             }
         }
     }
@@ -42,7 +38,6 @@ var ProductList = {
             fats: entryEl.findElement(by.css('.view-fats')),
             proteins: entryEl.findElement(by.css('.view-proteins')),
             carbs: entryEl.findElement(by.css('.view-carbs')),
-            portion: entryEl.findElement(by.css('.view-portion-and-unit')),
             editProduct: entryEl.findElement(by.css('.edit-product')),
             deleteProduct: entryEl.findElement(by.css('.delete-product'))
         }
@@ -79,7 +74,6 @@ describe('Products', function () {
         expect(entry.proteins.getText()).toEqual('2345');
         expect(entry.fats.getText()).toEqual('123');
         expect(entry.carbs.getText()).toEqual('456');
-        expect(entry.portion.getText()).toEqual('100 litres');
     });
     it('As a user I want the Edit Product form to be pre-populated with a correct data.', function () {
         var entry = ProductList.targetEntry(productName);
@@ -94,8 +88,6 @@ describe('Products', function () {
         expect(editProductPage.proteins.getAttribute('value')).toEqual('2345');
         expect(editProductPage.fats.getAttribute('value')).toEqual('123');
         expect(editProductPage.carbs.getAttribute('value')).toEqual('456');
-        expect(editProductPage.portion.getAttribute('value')).toEqual('100');
-        expect(editProductPage.portion_unit.getAttribute('value')).toEqual('litres');
     });
     it('As a user I want to be able to delete a product', function () {
         HomePage.goProducts.click();
@@ -114,8 +106,6 @@ describe('Products', function () {
         editProductPage.proteins.sendKeys('2345');
         editProductPage.fats.sendKeys('123');
         editProductPage.carbs.sendKeys('456');
-        editProductPage.portion.sendKeys('100');
-        editProductPage.portion_unit.sendKeys('litres');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
     it('As an administrator I want the calories to be less than 10000', function() {
@@ -127,8 +117,6 @@ describe('Products', function () {
         editProductPage.proteins.sendKeys('2345');
         editProductPage.fats.sendKeys('123');
         editProductPage.carbs.sendKeys('456');
-        editProductPage.portion.sendKeys('100');
-        editProductPage.portion_unit.sendKeys('litres');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
     it('As an administrator I want the calories to be more than 0 (positive only)', function() {
@@ -140,8 +128,6 @@ describe('Products', function () {
         editProductPage.proteins.sendKeys('2345');
         editProductPage.fats.sendKeys('123');
         editProductPage.carbs.sendKeys('456');
-        editProductPage.portion.sendKeys('100');
-        editProductPage.portion_unit.sendKeys('litres');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
 });

@@ -1,4 +1,4 @@
-define(['angular', 'angular-resource'], function (ng) {
+define(['angular', 'angular-resource', 'ui.bootstrap'], function (ng) {
     'use strict';
-    return ng.module('hiking_food.controllers', ['hiking_food']);
+    return ng.module('hiking_food.controllers', ['hiking_food', 'ui.bootstrap']);
 });
