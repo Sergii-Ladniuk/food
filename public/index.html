@@ -4,23 +4,34 @@
     <script src="components/requirejs/require.js" data-main="js/main.js"></script>
     <link type="text/css" href="css/style.css" rel="stylesheet"/>
     <link type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link type="text/css" href="components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-<h1>{{"welcome"|localize}}</h1>
+<div class="page-header">
+    <h1>{{"welcome"|localize}}</h1>
+    <small>Lets hike easy!</small>
+</div>
+
 <span lang></span>
 
-<div class="left-bar">
-    <ul>
-        <li><a href="/#/">{{"products"|localize}}</a></li>
-        <li><a href="/#/">{{"recipes"|localize}}</a></li>
-    </ul>
-</div>
-<div class="right-bar">
-    <p>Some info here</p>
-</div>
-<div class="main-bar">
-    <div ng-view/>
+<div class="container">
+    <div class="row ">
+        <div class="col-md-2">
+            <div class="list-group">
+                    <a class="list-group-item" href="/#/" id="go-products">{{"products"|localize}}</a>
+                    <a class="list-group-item" href="/#/" id="go-recipes">{{"recipes"|localize}}</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div ng-view></div>
+        </div>
+        <div class="col-md-2">
+            <p>Some info here</p>
+        </div>
+    </div>
 </div>
 </body>
 </html>

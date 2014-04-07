@@ -32,6 +32,12 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "unit": {
                 "en": "Unit",
                 "ru": "Единица измерения"
+            }, "yes": {
+                "en": "Yes",
+                "ru": "Да"
+            }, "no": {
+                "en": "No",
+                "ru": "Нет"
             }
         }
     });

@@ -1,35 +1,44 @@
-<a class="button" ng-href="/#/newProduct">{{"New Product"|localize}}</a>
-<ul class="main-list">
-    <li ng-repeat="product in products">
-        <div>
-            <h4>{{product.title}}</h4>
-            <div class="descr">{{product.description}}</div>
-            <div class="details">
-                <table>
-                    <tr>
-                        <td>{{"calories"|localize}}:</td>
-                        <td>{{product.calories}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{"proteins"|localize}}:</td>
-                        <td>{{product.proteins}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{"fats"|localize}}:</td>
-                        <td>{{product.fats}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{"carbs"|localize}}:</td>
-                        <td>{{product.carbs}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{"portion"|localize}}:</td>
-                        <td>{{product.portion}} {{product.portion_unit}}</td>
-                    </tr>
-                </table>
+<div class="col3-list-item">
+    <div class="btn-group btn-panel">
+        <a class="btn btn-primary" ng-href="/#/newProduct" id="new-product-btn">{{"New Product"|localize}}</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="product in products">
+            <div class="thumbnail">
+                <div class="content">
+                    <h4>{{product.title}}</h4>
+
+                    <div class="descr view-description">{{product.description}}</div>
+                    <div class="details">
+                        <table>
+                            <tr>
+                                <td>{{"calories"|localize}}:</td>
+                                <td class="view-calories">{{product.calories}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{"proteins"|localize}}:</td>
+                                <td class="view-proteins">{{product.proteins}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{"fats"|localize}}:</td>
+                                <td class="view-fats">{{product.fats}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{"carbs"|localize}}:</td>
+                                <td class="view-carbs">{{product.carbs}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{"portion"|localize}}:</td>
+                                <td class="view-portion-and-unit">{{product.portion}} {{product.portion_unit}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="item-btn-panel">
+                        <a class="btn btn-primary edit-product" ng-href="/#/editProduct/{{product._id}}">{{"edit"|localize}}</a>
+                        <a class="btn btn-danger delete-product" ng-href="/#/removeProduct/{{product._id}}">{{"remove"|localize}}</a>
+                    </div>
+                </div>
             </div>
-            <a class="button" ng-href="/#/editProduct/{{product._id}}">{{"edit"|localize}}</a>
-            <a class="button" ng-href="/#/removeProduct/{{product._id}}">{{"remove"|localize}}</a>
         </div>
-    </li>
-</ul>
+    </div>
+</div>

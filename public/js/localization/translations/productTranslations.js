@@ -26,6 +26,9 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "Edit Product": {
                 "en": "Edit Product",
                 "ru": "Редактирование продукта"
+            }, "Delete Product Warning": {
+                "en": "Do you really want to remove the product",
+                "ru": "Вы действительно хотите удалить продукт"
             }
         }
     });

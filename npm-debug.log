@@ -1,0 +1,261 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.21
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/sergii/dev/repo-food/food',
+5 verbose install   [ 'express',
+5 verbose install     'mongo',
+5 verbose install     'mongoose',
+5 verbose install     'grunt',
+5 verbose install     'grunt-css',
+5 verbose install     'grunt-contrib-connect',
+5 verbose install     'grunt-contrib-uglify',
+5 verbose install     'grunt-contrib-concat',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-shell',
+5 verbose install     'grunt-contrib-copy',
+5 verbose install     'karma-mocha',
+5 verbose install     'karma-chrome-launcher',
+5 verbose install     'karma-safari-launcher',
+5 verbose install     'karma-firefox-launcher',
+5 verbose install     'karma-ng-scenario',
+5 verbose install     'chai',
+5 verbose install     'karma-script-launcher',
+5 verbose install     'karma-html2js-preprocessor',
+5 verbose install     'karma-ng-html2js-preprocessor',
+5 verbose install     'karma-jasmine',
+5 verbose install     'karma-requirejs',
+5 verbose install     'karma-coffee-preprocessor',
+5 verbose install     'karma-phantomjs-launcher',
+5 verbose install     'karma',
+5 verbose install     'grunt-karma',
+5 verbose install     'grunt-open',
+5 verbose install     'ng-midway-tester',
+5 verbose install     'bower',
+5 verbose install     'mocha',
+5 verbose install     'karma-junit-reporter',
+5 verbose install     'selenium-webdriver',
+5 verbose install     'protractor' ] ]
+6 info preinstall application-name@0.0.1
+7 warn package.json mongo@0.1.0 No repository field.
+8 verbose readDependencies using package.json deps
+9 verbose already installed skipping mongoose@3.5.x /Users/sergii/dev/repo-food/food
+10 verbose already installed skipping grunt@~0.4.1 /Users/sergii/dev/repo-food/food
+11 verbose already installed skipping grunt-css@~0.5.4 /Users/sergii/dev/repo-food/food
+12 verbose already installed skipping grunt-contrib-connect@~0.1.2 /Users/sergii/dev/repo-food/food
+13 verbose already installed skipping grunt-contrib-uglify@~0.2.1 /Users/sergii/dev/repo-food/food
+14 verbose already installed skipping grunt-contrib-concat@~0.3.0 /Users/sergii/dev/repo-food/food
+15 verbose already installed skipping grunt-shell@~0.2.2 /Users/sergii/dev/repo-food/food
+16 verbose already installed skipping grunt-contrib-watch@~0.4.4 /Users/sergii/dev/repo-food/food
+17 verbose already installed skipping grunt-contrib-copy@~0.4.1 /Users/sergii/dev/repo-food/food
+18 verbose cache add [ 'karma-mocha@latest', null ]
+19 verbose cache add name=undefined spec="karma-mocha@latest" args=["karma-mocha@latest",null]
+20 verbose parsed url { protocol: null,
+20 verbose parsed url   slashes: null,
+20 verbose parsed url   auth: null,
+20 verbose parsed url   host: null,
+20 verbose parsed url   port: null,
+20 verbose parsed url   hostname: null,
+20 verbose parsed url   hash: null,
+20 verbose parsed url   search: null,
+20 verbose parsed url   query: null,
+20 verbose parsed url   pathname: 'karma-mocha@latest',
+20 verbose parsed url   path: 'karma-mocha@latest',
+20 verbose parsed url   href: 'karma-mocha@latest' }
+21 verbose cache add name="karma-mocha" spec="latest" args=["karma-mocha","latest"]
+22 verbose parsed url { protocol: null,
+22 verbose parsed url   slashes: null,
+22 verbose parsed url   auth: null,
+22 verbose parsed url   host: null,
+22 verbose parsed url   port: null,
+22 verbose parsed url   hostname: null,
+22 verbose parsed url   hash: null,
+22 verbose parsed url   search: null,
+22 verbose parsed url   query: null,
+22 verbose parsed url   pathname: 'latest',
+22 verbose parsed url   path: 'latest',
+22 verbose parsed url   href: 'latest' }
+23 verbose addNamed [ 'karma-mocha', 'latest' ]
+24 verbose addNamed [ null, null ]
+25 verbose cache add [ 'karma-safari-launcher@latest', null ]
+26 verbose cache add name=undefined spec="karma-safari-launcher@latest" args=["karma-safari-launcher@latest",null]
+27 verbose parsed url { protocol: null,
+27 verbose parsed url   slashes: null,
+27 verbose parsed url   auth: null,
+27 verbose parsed url   host: null,
+27 verbose parsed url   port: null,
+27 verbose parsed url   hostname: null,
+27 verbose parsed url   hash: null,
+27 verbose parsed url   search: null,
+27 verbose parsed url   query: null,
+27 verbose parsed url   pathname: 'karma-safari-launcher@latest',
+27 verbose parsed url   path: 'karma-safari-launcher@latest',
+27 verbose parsed url   href: 'karma-safari-launcher@latest' }
+28 verbose cache add name="karma-safari-launcher" spec="latest" args=["karma-safari-launcher","latest"]
+29 verbose parsed url { protocol: null,
+29 verbose parsed url   slashes: null,
+29 verbose parsed url   auth: null,
+29 verbose parsed url   host: null,
+29 verbose parsed url   port: null,
+29 verbose parsed url   hostname: null,
+29 verbose parsed url   hash: null,
+29 verbose parsed url   search: null,
+29 verbose parsed url   query: null,
+29 verbose parsed url   pathname: 'latest',
+29 verbose parsed url   path: 'latest',
+29 verbose parsed url   href: 'latest' }
+30 verbose addNamed [ 'karma-safari-launcher', 'latest' ]
+31 verbose addNamed [ null, null ]
+32 verbose already installed skipping karma-chrome-launcher@~0.1.0 /Users/sergii/dev/repo-food/food
+33 verbose already installed skipping karma-firefox-launcher@~0.1.0 /Users/sergii/dev/repo-food/food
+34 silly lockFile 8d5a493d-karma-mocha-latest karma-mocha@latest
+35 verbose lock karma-mocha@latest /Users/sergii/.npm/8d5a493d-karma-mocha-latest.lock
+36 silly lockFile 710372b0-karma-safari-launcher-latest karma-safari-launcher@latest
+37 verbose lock karma-safari-launcher@latest /Users/sergii/.npm/710372b0-karma-safari-launcher-latest.lock
+38 info addNameTag [ 'karma-mocha', 'latest' ]
+39 verbose cache add [ 'karma-ng-scenario@latest', null ]
+40 verbose cache add name=undefined spec="karma-ng-scenario@latest" args=["karma-ng-scenario@latest",null]
+41 verbose parsed url { protocol: null,
+41 verbose parsed url   slashes: null,
+41 verbose parsed url   auth: null,
+41 verbose parsed url   host: null,
+41 verbose parsed url   port: null,
+41 verbose parsed url   hostname: null,
+41 verbose parsed url   hash: null,
+41 verbose parsed url   search: null,
+41 verbose parsed url   query: null,
+41 verbose parsed url   pathname: 'karma-ng-scenario@latest',
+41 verbose parsed url   path: 'karma-ng-scenario@latest',
+41 verbose parsed url   href: 'karma-ng-scenario@latest' }
+42 verbose cache add name="karma-ng-scenario" spec="latest" args=["karma-ng-scenario","latest"]
+43 verbose parsed url { protocol: null,
+43 verbose parsed url   slashes: null,
+43 verbose parsed url   auth: null,
+43 verbose parsed url   host: null,
+43 verbose parsed url   port: null,
+43 verbose parsed url   hostname: null,
+43 verbose parsed url   hash: null,
+43 verbose parsed url   search: null,
+43 verbose parsed url   query: null,
+43 verbose parsed url   pathname: 'latest',
+43 verbose parsed url   path: 'latest',
+43 verbose parsed url   href: 'latest' }
+44 verbose addNamed [ 'karma-ng-scenario', 'latest' ]
+45 verbose addNamed [ null, null ]
+46 silly lockFile 5429f088-karma-ng-scenario-latest karma-ng-scenario@latest
+47 verbose lock karma-ng-scenario@latest /Users/sergii/.npm/5429f088-karma-ng-scenario-latest.lock
+48 info addNameTag [ 'karma-safari-launcher', 'latest' ]
+49 verbose already installed skipping chai@1.4.0 /Users/sergii/dev/repo-food/food
+50 info addNameTag [ 'karma-ng-scenario', 'latest' ]
+51 verbose already installed skipping karma-script-launcher@~0.1.0 /Users/sergii/dev/repo-food/food
+52 verbose url raw karma-mocha
+53 verbose url resolving [ 'https://registry.npmjs.org/', './karma-mocha' ]
+54 verbose url resolved https://registry.npmjs.org/karma-mocha
+55 info trying registry request attempt 1 at 17:48:03
+56 verbose etag "EI8ZNYYM98K3VT19JWFK1JQ17"
+57 http GET https://registry.npmjs.org/karma-mocha
+58 verbose already installed skipping karma-ng-html2js-preprocessor@~0.1.0 /Users/sergii/dev/repo-food/food
+59 verbose already installed skipping karma-html2js-preprocessor@~0.1.0 /Users/sergii/dev/repo-food/food
+60 verbose already installed skipping karma-jasmine@~0.1.3 /Users/sergii/dev/repo-food/food
+61 verbose already installed skipping karma-requirejs@~0.1.0 /Users/sergii/dev/repo-food/food
+62 verbose already installed skipping karma-coffee-preprocessor@~0.1.0 /Users/sergii/dev/repo-food/food
+63 verbose already installed skipping karma-phantomjs-launcher@~0.1.0 /Users/sergii/dev/repo-food/food
+64 verbose already installed skipping karma@~0.10.8 /Users/sergii/dev/repo-food/food
+65 verbose already installed skipping grunt-karma@~0.6.2 /Users/sergii/dev/repo-food/food
+66 verbose already installed skipping grunt-open@~0.2.2 /Users/sergii/dev/repo-food/food
+67 verbose already installed skipping ng-midway-tester@2.0.5 /Users/sergii/dev/repo-food/food
+68 verbose already installed skipping bower@~1.2.7 /Users/sergii/dev/repo-food/food
+69 verbose already installed skipping mocha@1.13.0 /Users/sergii/dev/repo-food/food
+70 verbose url raw karma-safari-launcher
+71 verbose url resolving [ 'https://registry.npmjs.org/', './karma-safari-launcher' ]
+72 verbose url resolved https://registry.npmjs.org/karma-safari-launcher
+73 info trying registry request attempt 1 at 17:48:03
+74 verbose etag "DZE5R62A4S5CZ5UHYFP9NIA3X"
+75 http GET https://registry.npmjs.org/karma-safari-launcher
+76 verbose already installed skipping selenium-webdriver@2.41.0 /Users/sergii/dev/repo-food/food
+77 verbose already installed skipping karma-junit-reporter@~0.2.1 /Users/sergii/dev/repo-food/food
+78 verbose cache add [ 'protractor@0.0.7', null ]
+79 verbose cache add name=undefined spec="protractor@0.0.7" args=["protractor@0.0.7",null]
+80 verbose parsed url { protocol: null,
+80 verbose parsed url   slashes: null,
+80 verbose parsed url   auth: null,
+80 verbose parsed url   host: null,
+80 verbose parsed url   port: null,
+80 verbose parsed url   hostname: null,
+80 verbose parsed url   hash: null,
+80 verbose parsed url   search: null,
+80 verbose parsed url   query: null,
+80 verbose parsed url   pathname: 'protractor@0.0.7',
+80 verbose parsed url   path: 'protractor@0.0.7',
+80 verbose parsed url   href: 'protractor@0.0.7' }
+81 verbose cache add name="protractor" spec="0.0.7" args=["protractor","0.0.7"]
+82 verbose parsed url { protocol: null,
+82 verbose parsed url   slashes: null,
+82 verbose parsed url   auth: null,
+82 verbose parsed url   host: null,
+82 verbose parsed url   port: null,
+82 verbose parsed url   hostname: null,
+82 verbose parsed url   hash: null,
+82 verbose parsed url   search: null,
+82 verbose parsed url   query: null,
+82 verbose parsed url   pathname: '0.0.7',
+82 verbose parsed url   path: '0.0.7',
+82 verbose parsed url   href: '0.0.7' }
+83 verbose addNamed [ 'protractor', '0.0.7' ]
+84 verbose addNamed [ '0.0.7', '0.0.7' ]
+85 silly lockFile 1b270c28-protractor-0-0-7 protractor@0.0.7
+86 verbose lock protractor@0.0.7 /Users/sergii/.npm/1b270c28-protractor-0-0-7.lock
+87 verbose already installed skipping express@3.4.0 /Users/sergii/dev/repo-food/food
+88 verbose already installed skipping mongo@>= 0.1.0 /Users/sergii/dev/repo-food/food
+89 verbose url raw karma-ng-scenario
+90 verbose url resolving [ 'https://registry.npmjs.org/', './karma-ng-scenario' ]
+91 verbose url resolved https://registry.npmjs.org/karma-ng-scenario
+92 info trying registry request attempt 1 at 17:48:03
+93 verbose etag "BIAZ2NB3FTO14I7CF937ETSFL"
+94 http GET https://registry.npmjs.org/karma-ng-scenario
+95 verbose url raw protractor/0.0.7
+96 verbose url resolving [ 'https://registry.npmjs.org/', './protractor/0.0.7' ]
+97 verbose url resolved https://registry.npmjs.org/protractor/0.0.7
+98 info trying registry request attempt 1 at 17:48:03
+99 http GET https://registry.npmjs.org/protractor/0.0.7
+100 http 404 https://registry.npmjs.org/protractor/0.0.7
+101 silly registry.get cb [ 404,
+101 silly registry.get   { date: 'Sun, 06 Apr 2014 14:48:04 GMT',
+101 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+101 silly registry.get     etag: '"8QW99JVYIMRP83YU8VAJDS7C6"',
+101 silly registry.get     'content-type': 'application/json',
+101 silly registry.get     via: '1.1 varnish',
+101 silly registry.get     'cache-control': 'max-age=0',
+101 silly registry.get     'content-length': '36',
+101 silly registry.get     'accept-ranges': 'bytes',
+101 silly registry.get     age: '0',
+101 silly registry.get     'x-served-by': 'cache-v44-ASH, cache-fra1226-FRA',
+101 silly registry.get     'x-cache': 'MISS, MISS',
+101 silly registry.get     'x-cache-hits': '0, 0',
+101 silly registry.get     'x-timer': 'S1396795684.186296463,VS0,VS45,VE71,VE125',
+101 silly registry.get     vary: 'Accept',
+101 silly registry.get     'keep-alive': 'timeout=10, max=50',
+101 silly registry.get     connection: 'Keep-Alive' } ]
+102 silly lockFile 1b270c28-protractor-0-0-7 protractor@0.0.7
+103 silly lockFile 1b270c28-protractor-0-0-7 protractor@0.0.7
+104 error Error: version not found: 0.0.7 : protractor/0.0.7
+104 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:272:14)
+104 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:22)
+104 error     at Request.EventEmitter.emit (events.js:98:17)
+104 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:873:14)
+104 error     at Request.EventEmitter.emit (events.js:117:20)
+104 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:824:12)
+104 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+104 error     at _stream_readable.js:920:16
+104 error     at process._tickCallback (node.js:415:13)
+105 error If you need help, you may report this log at:
+105 error     <http://github.com/isaacs/npm/issues>
+105 error or email it to:
+105 error     <npm-@googlegroups.com>
+106 error System Darwin 12.5.0
+107 error command "node" "/usr/local/bin/npm" "install"
+108 error cwd /Users/sergii/dev/repo-food/food
+109 error node -v v0.10.21
+110 error npm -v 1.3.11
+111 verbose exit [ 1, true ]

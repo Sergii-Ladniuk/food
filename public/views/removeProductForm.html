@@ -1,5 +1,5 @@
-<p >Do you really want to remove the product '{{product.title}}'?</p>
+<p id="delete-product-question">{{"Delete Product Warning"|localize}} '{{product.title}}'?</p>
 <form name="removeProductForm" ng-submit="remove()">
-    <button class="btn btn-primary">Yes</button>
-    <button type="button" class="btn" ng-click="cancel()">No</button>
+    <button id="delete" class="btn btn-primary">{{"yes"|localize}}</button>
+    <button id="cancel" type="button" class="btn" ng-click="cancel()">{{"no"|localize}}</button>
 </form>

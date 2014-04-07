@@ -1,7 +1,14 @@
 var mongoose = require('./DB.js').mangoose;
 
 var productSchema = mongoose.Schema({
-    title: {type: String, required: true}, description: {type: String, required: true}, calories: {type: Number, required: true}, proteins: {type: Number, required: true}, fats: {type: Number, required: true}, carbs: {type: Number, required: true}, portion: {type: Number, required: true}, portion_unit: {type: String, required: true}
+    title: {type: String, required: true, validate: /^.{1,50}$/},
+    description: {type: String, required: false, validate: /^.{0,500}$/},
+    calories: {type: Number, required: true, min: 0, max: 10000},
+    proteins: {type: Number, required: true, min: 0, max: 10000},
+    fats: {type: Number, required: true, min: 0, max: 10000},
+    carbs: {type: Number, required: true, min: 0, max: 10000},
+    portion: {type: Number, required: true, min: 0, max: 10000},
+    portion_unit: {type: String, required: true, validate: /^.{1,30}$/}
 })
 
 exports.ProductModel = mongoose.model('Product', productSchema);
