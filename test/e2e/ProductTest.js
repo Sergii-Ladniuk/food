@@ -8,7 +8,7 @@ var HomePage = {
 var EditProductPage = {
     build: function () {
         return {
-            header: element(by.id('editProductForm-header')),
+            header: element(by.css('.editProductForm-header')),
             title: element(by.model('product.title')),
             description: element(by.model('product.description')),
             calories: element(by.model('product.calories')),
