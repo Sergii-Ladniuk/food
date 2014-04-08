@@ -9,14 +9,6 @@ define(
                 $routeProvider.
                     when('/', {
                         controller: 'ProductListController',
-                        resolve: {
-                            products: [
-                                'ProductListLoader',
-                                function (ProductListLoader) {
-                                    return ProductListLoader();
-                                }
-                            ]
-                        },
                         templateUrl: '/views/productList.html'
                     }).when('/admin', {
                         controller: 'AdminController',

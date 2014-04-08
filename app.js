@@ -39,6 +39,7 @@ app.get('/products', products.list);
 app.get('/products/:id', products.get);
 app.delete('/products/:id', products.remove);
 app.delete('/collection/products', products.deleteAllProducts);
+app.get('/count/products', products.countProducts);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

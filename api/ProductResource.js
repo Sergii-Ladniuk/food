@@ -9,7 +9,13 @@ exports.save = function (request, response) {
 };
 
 exports.list = function (request, response) {
-    ProductModel.find({}).sort('title').exec(Callbacks.loadCallback(response));
+    var query = ProductModel.find({}).sort('title');
+    if (request.query.pageNumber) {
+        var pageNumber = request.query.pageNumber - 1;
+        var pageSize = request.query.pageSize || 20;
+        query = query.skip(pageSize * pageNumber).limit(pageSize);
+    }
+    query.exec(Callbacks.loadCallback(response));
 };
 
 exports.get = function (request, response) {
@@ -45,10 +51,10 @@ exports.import = function (request, response) {
             }
         }
         return result;
-    }
+    };
 
     dao.insertAll(parsedJSON.products, preprocessF, Callbacks.saveCallback(response));
-}
+};
 
 exports.deleteAllProducts = function (request, response) {
     var collectionName = ProductCollection.collectionName().toLowerCase();
@@ -62,4 +68,19 @@ exports.deleteAllProducts = function (request, response) {
             response.send({"status": "ok"});
         }
     });
+};
+
+exports.countProducts = function(request, response) {
+    ProductModel.count({}, function(err, count) {
+        var result = {};
+        if (err) {
+            response.status = 500;
+            console.log(err);
+            result.status = 'fail';
+        } else {
+            result.status = 'ok';
+            result.count = count;
+        }
+        response.send(result);
+    })
 }

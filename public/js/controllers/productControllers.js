@@ -1,8 +1,21 @@
 define(['./module', '../app'], function (controllers) {
     'use strict';
     controllers
-        .controller('ProductListController', function ($scope, products) {
-            $scope.products = products;
+        .controller('ProductListController', function ($scope, ProductListLoader) {
+            $scope.pageSize = 9;
+            $scope.maxPageCount = 5;
+            $scope.pageSelected = function(page) {
+                $scope.currentPage = page;
+                $scope.products = ProductListLoader.getPage($scope.currentPage, $scope.pageSize);
+            };
+            $scope.pageSelected(1);
+            ProductListLoader.totalCount(
+                function success(res) {
+                    $scope.totalCount = res.count;
+                }, function fail() {
+                    // todo
+                }
+            );
             $scope.removeProduct = function ($event, id) {
                 $event.preventDefault();
                 $scope.products.$remove({id: id}, function (product) {

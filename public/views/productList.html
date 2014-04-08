@@ -2,6 +2,12 @@
     <div class="btn-group btn-panel">
         <a class="btn btn-primary" ng-href="/#/newProduct" id="new-product-btn">{{"New Product"|localize}}</a>
     </div>
+    <div>
+        <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
+                    class="pagination-sm" on-select-page="pageSelected(page)"
+                    boundary-links="true" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    previous-text="&lsaquo;"></pagination>
+    </div>
     <div class="row">
         <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="product in products">
             <div class="thumbnail">
@@ -37,4 +43,8 @@
             </div>
         </div>
     </div>
+    <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
+                class="pagination-sm" on-select-page="pageSelected(page)"
+                boundary-links="true" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                previous-text="&lsaquo;"></pagination>
 </div>
