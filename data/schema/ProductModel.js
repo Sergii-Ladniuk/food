@@ -9,4 +9,9 @@ var productSchema = mongoose.Schema({
     carbs: {type: Number, required: true, min: 0, max: 10000}
 })
 
-exports.ProductModel = mongoose.model('Product', productSchema);
+var PRODUCT_COLLECTION = 'Product';
+
+exports.collectionName = function () {
+    return PRODUCT_COLLECTION + 's';
+}
+exports.ProductModel = mongoose.model(PRODUCT_COLLECTION, productSchema);

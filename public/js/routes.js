@@ -18,6 +18,9 @@ define(
                             ]
                         },
                         templateUrl: '/views/productList.html'
+                    }).when('/admin', {
+                        controller: 'AdminController',
+                        templateUrl: '/views/admin.html'
                     }).when('/newProduct', {
                         controller: 'NewProductController',
                         templateUrl: '/views/editProductForm.html'

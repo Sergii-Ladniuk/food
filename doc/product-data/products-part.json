@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "title": "Абрикосы",
+            "description": "86,0",
+            "proteins": "0,9",
+            "fats": "0",
+            "carbs": "10,5",
+            "calories": "46"
+        },
+        {
+            "title": "Айва",
+            "description": "87,5",
+            "proteins": "0,6",
+            "fats": "0",
+            "carbs": "8,9",
+            "calories": "38"
+        },
+        {
+            "title": "Вареная колбаса Любительская",
+            "description": "57,0",
+            "proteins": "12,2",
+            "fats": "28,0",
+            "carbs": "0",
+            "calories": "301"
+        },
+        {
+            "title": "Вареная колбаса Молочная",
+            "description": "62,8",
+            "proteins": "11,7",
+            "fats": "22,8",
+            "carbs": "0",
+            "calories": "252"
+        },
+        {
+            "title": "Вареная колбаса Отдельная",
+            "description": "64,8",
+            "proteins": "10,1",
+            "fats": "20,1",
+            "carbs": "1,8",
+            "calories": "228"
+        }
+    ]
+}

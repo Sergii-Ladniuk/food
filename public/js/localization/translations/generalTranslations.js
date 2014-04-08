@@ -16,7 +16,7 @@ define(['angular', './translationModule'], function (ng, module) {
                 "ru": "Главная"
             }, "edit": {
                 "en": "Edit",
-                "ru": "Править"
+                "ru": "Изменить"
             }, "remove": {
                 "en": "Remove",
                 "ru": "Удалить"

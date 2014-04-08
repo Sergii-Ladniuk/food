@@ -8,7 +8,7 @@ a {
     color: #0000FF;
 }
 
-#editProductForm-header{
+.editProductForm-header{
     display: block;
     margin-bottom: 30px;
 }
@@ -169,6 +169,7 @@ input.ng-invalid {
 
 .col3-list-item .content {
     margin: 10px;
+    height: 190px;
 }
 
 .main-container {

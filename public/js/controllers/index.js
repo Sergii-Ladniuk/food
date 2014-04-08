@@ -1,4 +1,5 @@
 define([
-    './productControllers'
+    './productControllers',
+    './adminController'
     ], function() {}
 );
