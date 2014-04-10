@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4101d2dc-84b9-480d-8549-f0073caa3af4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/ProductResource.js" afterPath="$PROJECT_DIR$/api/ProductResource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/productControllers.js" afterPath="$PROJECT_DIR$/public/js/controllers/productControllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/productList.html" afterPath="$PROJECT_DIR$/public/views/productList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/services/productServices.js" afterPath="$PROJECT_DIR$/public/js/services/productServices.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/routes.js" afterPath="$PROJECT_DIR$/public/js/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="food.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,10 +37,10 @@
     <file path="$USER_HOME$/IdeaProjects/try_java/src/main/java/Drawer.java" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1389437468176" ignored="false" />
     <file path="/Drawer.java" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1389437467010" ignored="false" />
     <file path="/editProductForm.html" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396891191153" ignored="false" />
-    <file path="/style.css" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396963075565" ignored="false" />
+    <file path="/style.css" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1397109672953" ignored="false" />
     <file path="/ProductModel.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396960876802" ignored="false" />
     <file path="/UserModel.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1393873536636" ignored="false" />
-    <file path="/index.html" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396892860140" ignored="false" />
+    <file path="/index.html" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1397109458200" ignored="false" />
     <file path="/productList.html" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396969308576" ignored="false" />
     <file path="/ProductTest.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396964477432" ignored="false" />
     <file path="/fragment.java" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396792969804" ignored="false" />
@@ -53,7 +50,7 @@
     <file path="/productControllers.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396969321549" ignored="false" />
     <file path="/module.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396874574187" ignored="false" />
     <file path="/main.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396866825132" ignored="false" />
-    <file path="/a.dummy" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396874494876" ignored="false" />
+    <file path="/a.dummy" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1397109507053" ignored="false" />
     <file path="/products.csv" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396892203679" ignored="false" />
     <file path="/products.json" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396892706109" ignored="false" />
     <file path="/routes.js" changelist="4101d2dc-84b9-480d-8549-f0073caa3af4" time="1396892978459" ignored="false" />
@@ -126,16 +123,43 @@
       <file leaf-file-name="productList.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/productList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="85" selection-start="2370" selection-end="2370" vertical-scroll-proportion="-10.625">
+            <state line="45" column="85" selection-start="2370" selection-end="2370" vertical-scroll-proportion="-28.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="productControllers.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="40" selection-start="1198" selection-end="1198" vertical-scroll-proportion="-12.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="10" selection-start="1422" selection-end="1422" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="localization.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/localization/localization.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="100" selection-start="416" selection-end="416" vertical-scroll-proportion="0.33168316">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="productControllers.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/controllers/productControllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="40" selection-start="568" selection-end="568" vertical-scroll-proportion="0.41958043">
+            <state line="24" column="44" selection-start="975" selection-end="975" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -195,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/doc/product-data/products-part.json" />
         <option value="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/json.js" />
         <option value="$PROJECT_DIR$/data/dao/GenericDao.js" />
         <option value="$PROJECT_DIR$/public/js/controllers/adminController.js" />
@@ -203,7 +226,6 @@
         <option value="$PROJECT_DIR$/public/views/admin.html" />
         <option value="$PROJECT_DIR$/public/js/services/adminServices.js" />
         <option value="$PROJECT_DIR$/data/schema/ProductModel.js" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/test/e2e/ProductTest.js" />
         <option value="$PROJECT_DIR$/public/js/routes.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -211,6 +233,8 @@
         <option value="$PROJECT_DIR$/api/ProductResource.js" />
         <option value="$PROJECT_DIR$/public/views/productList.html" />
         <option value="$PROJECT_DIR$/public/js/controllers/productControllers.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
       </list>
     </option>
   </component>
@@ -263,6 +287,96 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="food" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -513,11 +627,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="798" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32890856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970502" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -528,8 +642,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6740413" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3259587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.67109144" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -608,20 +722,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="43" selection-start="61" selection-end="65" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/generic/ResourceCallback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/schema/DB.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
@@ -632,13 +732,6 @@
     <entry file="file://$PROJECT_DIR$/data/dao/GenericDao.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="17" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -706,16 +799,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/productList.html">
+    <entry file="file://$PROJECT_DIR$/public/js/controllers/productControllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="85" selection-start="2370" selection-end="2370" vertical-scroll-proportion="-10.625">
+        <state line="24" column="44" selection-start="975" selection-end="975" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/controllers/productControllers.js">
+    <entry file="file://$PROJECT_DIR$/public/views/productList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="568" selection-end="568" vertical-scroll-proportion="0.41958043">
+        <state line="45" column="85" selection-start="2370" selection-end="2370" vertical-scroll-proportion="-28.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="40" selection-start="1198" selection-end="1198" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="10" selection-start="1422" selection-end="1422" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/localization/localization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="100" selection-start="416" selection-end="416" vertical-scroll-proportion="0.33168316">
           <folding />
         </state>
       </provider>

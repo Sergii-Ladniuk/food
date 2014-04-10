@@ -10,21 +10,37 @@
 </head>
 
 <body>
-<div class="page-header">
-    <h1>{{"welcome"|localize}}</h1>
-    <small>Lets hike easy!</small>
-</div>
+<!--<div class="page-header">-->
+<!--<h1>{{"welcome"|localize}}</h1>-->
+<!--<small>Lets hike easy!</small>-->
+<!--</div>-->
 
-<span lang></span>
 
 <div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/#/">(: Hiking Food</a>
+                <small>Lets hike easy!</small>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right nav-pills">
+                    <li>
+                        <span lang></span>
+                    </li>
+                    <li><a class="active" href="#">Sign in</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="row ">
         <div class="col-md-2">
             <div class="list-group">
-                    <a class="list-group-item" href="/#/" id="go-home">{{"home"|localize}}</a>
-                    <a class="list-group-item" href="/#/" id="go-products">{{"products"|localize}}</a>
-                    <a class="list-group-item" href="/#/" id="go-recipes">{{"recipes"|localize}}</a>
-                    <a class="list-group-item" href="/#/admin" id="go-admin">Admin Console</a>
+                <a class="list-group-item" href="/#/" id="go-home">{{"home"|localize}}</a>
+                <a class="list-group-item" href="/#/" id="go-products">{{"products"|localize}}</a>
+                <a class="list-group-item" href="/#/" id="go-recipes">{{"recipes"|localize}}</a>
+                <a class="list-group-item" href="/#/admin" id="go-admin">Admin Console</a>
             </div>
         </div>
         <div class="col-md-8 main-container">
