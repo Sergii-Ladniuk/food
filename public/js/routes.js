@@ -35,6 +35,9 @@ define(
                     }).when('/newRecipe', {
                         controller: 'NewRecipeController',
                         templateUrl: '/views/editRecipeForm.html'
+					}).when('/signup', {
+						controller: 'SignupController',
+						templateUrl: '/views/signup.html'
                     }).otherwise({ redirectTo: '/'})
             }
         ]);
