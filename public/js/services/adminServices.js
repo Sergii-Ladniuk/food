@@ -33,6 +33,8 @@ define(['./module', '../app'], function (services) {
                         }, function (error) {
                             fail(result);
                         });
+                    }, isUserExists: function(user) {
+
                     }
                 };
             }

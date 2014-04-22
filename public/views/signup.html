@@ -1,0 +1,81 @@
+<h3 class="custom-form-header">New User Registration</h3>
+<form name="signupForm" id="signupForm" class="form-horizontal" ng-submit="save()">
+	<div class="form-group">
+		<label class="control-label col-lg-3" for="userName">Name:</label>
+
+		<div class="col-lg-5">
+			<input class="input-sm form-control" name="userName" id="userName" ng-model="user.name" required ng-maxlength="30" focus/>
+
+			<div class="label label-danger" ng-show="(signupForm.userName.$dirty || submitted) && signupForm.userName.$error.required">
+				Required
+			</div>
+			<div class="label label-danger" ng-show="(signupForm.userName.$dirty || submitted) && signupForm.userName.$error.maxlength">
+				Maximum length for this field is 30.
+			</div>
+			<p class="help-block">Name must be unique within the system.</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-lg-3" for="email">Email:</label>
+
+		<div class="col-lg-5">
+			<input type="email" class="input-sm form-control" id="email" name="email" ng-model="user.email" required ng-maxlength="30"/>
+
+			<div class="label label-danger" ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.required">
+				Required
+			</div>
+			<div class="label label-danger" ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.maxlength">
+				Maximum length for this field is 30.
+			</div>
+			<div class="label label-danger" ng-show="(signupForm.email.$dirty && submitted) && signupForm.email.$error.email">
+				Invalid e-mail address.
+			</div>
+
+			<p class="help-block">Email will be used to activate your account.</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-lg-3" for="password">Password:</label>
+
+		<div class="col-lg-5">
+			<input type="password" class="input-sm form-control" id="password" name="password" ng-model="user.password" required
+				   ng-maxlength="30" ng-change="passwordChanged()"/>
+
+			<div class="label label-danger" ng-show="(signupForm.password.$dirty || submitted) && signupForm.password.$error.required">
+				Required
+			</div>
+			<div class="label label-danger" ng-show="(signupForm.password.$dirty || submitted) && signupForm.password.$error.maxlength">
+				Maximum length for this field is 30.
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-lg-3" for="confirmPassword">Confirm Password:</label>
+
+		<div class="col-lg-5">
+			<input type="password" class="input-sm form-control" id="confirmPassword" name="confirmPassword" ng-model="user.confirmPassword"
+				   required ng-maxlength="30" data-password-verify="user.password" ng-change="passwordChanged()"/>
+
+			<div class="label label-danger"
+				 ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.required">
+				Required
+			</div>
+			<div class="label label-danger"
+				 ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.maxlength">
+				Maximum length for this field is 30.
+			</div>
+			<div class="label label-danger"
+				 ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.match">
+				Passwords do not match.
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-lg-offset-3 col-lg-4">
+			<button type="button" class="btn btn-primary" id="submit" ng-click="submit()">Submit</button>
+			<button type="button" class="btn" id="cancel" ng-click="cancel()">Cancel</button>
+		</div>
+	</div>
+</form>

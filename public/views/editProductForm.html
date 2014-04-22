@@ -1,4 +1,4 @@
-<h3 class="editProductForm-header">{{"Edit Product"|localize}} <span class="item-title">{{product.title}}</span></h3>
+<h3 class="custom-form-header">{{"Edit Product"|localize}} <span class="item-title">{{product.title}}</span></h3>
 <form name="editProductForm" id="editProductForm" class="form-horizontal" ng-submit="save()">
     <div class="alert-messages">
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
