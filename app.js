@@ -8,6 +8,7 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var products = require('./api/ProductResource');
+var users = require('./api/UserResource');
 
 var app = express();
 
@@ -40,6 +41,9 @@ app.get('/products/:id', products.get);
 app.delete('/products/:id', products.remove);
 app.delete('/collection/products', products.deleteAllProducts);
 app.get('/count/products', products.countProducts);
+
+app.get('/user/:id', users.get);
+app.post('/user', users.save);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

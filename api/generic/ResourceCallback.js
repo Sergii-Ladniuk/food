@@ -3,7 +3,7 @@ exports.Callbacks = {
         return {
             loadCallback: function (resp) {
                 return function (err, result) {
-                    if (!err)
+                    if (!err && result)
                         resp.send(result);
                     else {
                         resp.status = 404;

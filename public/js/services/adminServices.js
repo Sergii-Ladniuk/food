@@ -17,10 +17,39 @@ define(['./module', '../app'], function (services) {
                         return upload_promise;
                     }
                 }
-            }
-
-        )
-            .factory('AdminService', function ($http) {
+            })
+            .factory('UserResource', function ($resource) {
+                return $resource('/user/:id', {id: '@id'}, {save: {method: 'POST'}});
+            })
+            .factory('UserService', function($http, $q, UserResource) {
+                return {
+                    createUser: function () {
+                        return new UserResource();
+                    }, isUserExists: function (userName) {
+                        var delay = $q.defer();
+                        UserResource.get(
+                            {id: userName},
+                            function success(response) {
+                                delay.resolve(response.status !== 'fail');
+                            },
+                            function fail(err) {
+                                delay.resolve(false);
+                            }
+                        );
+                        return delay.promise;
+                    }, saveUser: function (user, success) {
+                        user.$save(
+                            function ok(response) {
+                                success(response);
+                            },
+                            function fail(error) {
+                                //todo
+                            }
+                        );
+                    }
+                }
+            })
+            .factory('AdminService', function ($http, $q) {
                 return {
                     deleteAllProducts: function (success, fail) {
                         $http.delete('/collection/products').then(function (result) {
@@ -33,8 +62,6 @@ define(['./module', '../app'], function (services) {
                         }, function (error) {
                             fail(result);
                         });
-                    }, isUserExists: function(user) {
-
                     }
                 };
             }
