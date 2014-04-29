@@ -73,6 +73,8 @@ define(['./module', '../app'], function (services) {
                         return delay.promise;
                     }, isAdmin: function() {
                         return group === 'admin';
+                    }, isModerator: function() {
+                        return group === 'admin' || group === 'moderator';
                     }
                 }
             })

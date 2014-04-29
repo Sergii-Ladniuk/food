@@ -90,11 +90,20 @@ var isAdmin = function (request, response, next) {
     }
 };
 
-app.post('/products', products.save);
+var auth = function (request, response, next) {
+    if (request.isAuthenticated()) {
+        next();
+    }
+    else {
+        response.send(401);
+    }
+};
+
+app.post('/products', products.canEdit, products.save);
 app.post('/products/import', isAdmin, products.import);
 app.get('/products', products.list);
 app.get('/products/:id', products.get);
-app.delete('/products/:id', products.remove);
+app.delete('/products/:id', products.canEdit, products.remove);
 app.delete('/collection/products', isAdmin, products.deleteAllProducts);
 app.get('/count/products', products.countProducts);
 

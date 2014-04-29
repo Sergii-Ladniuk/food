@@ -6,7 +6,8 @@ var productSchema = mongoose.Schema({
     calories: {type: Number, required: true, min: 0, max: 10000},
     proteins: {type: Number, required: true, min: 0, max: 10000},
     fats: {type: Number, required: true, min: 0, max: 10000},
-    carbs: {type: Number, required: true, min: 0, max: 10000}
+    carbs: {type: Number, required: true, min: 0, max: 10000},
+    owner: {type: String, required: true, validate: /^.{1,30}$/}
 })
 
 var PRODUCT_COLLECTION = 'Product';

@@ -8,6 +8,25 @@ exports.save = function (request, response) {
     dao.save(request.body, Callbacks.saveCallback(response));
 };
 
+var isOwnerOrModerator = function (request, response, next) {
+    if (request.isAuthenticated()) {
+        if (request.user.group === 'admin') {
+            next();
+        } else {
+            ProductModel.findOne({_id: request.params.id || request.body._id}, function(err, product) {
+                if (!product || product.owner === request.user.username) {
+                    next();
+                }
+            });
+        }
+    } else {
+        response.send(401);
+    }
+};
+
+exports.canEdit = isOwnerOrModerator;
+exports.canDelete = isOwnerOrModerator;
+
 exports.list = function (request, response) {
     var query = ProductModel.find({}).sort('title');
     if (request.query.pageNumber) {
@@ -41,6 +60,7 @@ exports.import = function (request, response) {
     // skip description; replace in all number properties comma with point;
     // number properties are all but title and description
     var preprocessF = function (product) {
+        product.owner = 'system';
         var result = {};
         for (var prop in product) {
             if (prop === 'title') {

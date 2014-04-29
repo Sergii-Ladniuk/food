@@ -1,7 +1,7 @@
 define(['./module', '../app'], function (controllers) {
     'use strict';
     controllers
-        .controller('ProductListController', function ($scope, ProductListLoader) {
+        .controller('ProductListController', function ($scope, ProductListLoader, User) {
             $scope.pageSize = 9;
             $scope.maxPageCount = 5;
             $scope.pageSelected = function(page) {
@@ -22,8 +22,12 @@ define(['./module', '../app'], function (controllers) {
                     $location.path('/');
                 });
             };
+            $scope.canEdit = function(product) {
+                return User.isModerator() || User.getUserName() === product.owner;
+            };
+            $scope.canDelete = $scope.canEdit;
         })
-        .controller('NewProductController', function ($scope, $location, Product) {
+        .controller('NewProductController', function ($scope, $location, Product, User) {
             $scope.alerts = [];
             $scope.addAlert = function(msg) {
                 $scope.alerts.push({msg: msg, type: 'danger'});
@@ -34,6 +38,7 @@ define(['./module', '../app'], function (controllers) {
 
             $scope.product = new Product();
             $scope.save = function () {
+                $scope.product.owner = User.getUserName();
                 $scope.product.$save(function (response) {
                     if (response.status !== 'ok') {
                         $scope.addAlert('Internal server error.');

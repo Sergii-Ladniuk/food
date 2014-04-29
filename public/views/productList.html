@@ -1,6 +1,6 @@
 <div class="col3-list-item">
     <div class="btn-group btn-panel">
-        <a class="btn btn-primary" ng-href="/#/newProduct" id="new-product-btn">{{"New Product"|localize}}</a>
+        <a class="btn btn-primary" ng-href="/#/newProduct" id="new-product-btn" ng-show="user.isLoggedIn()">{{"New Product"|localize}}</a>
     </div>
     <div>
         <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
@@ -36,8 +36,8 @@
                         </table>
                     </div>
                     <div class="item-btn-panel">
-                        <a class="btn btn-primary edit-product" ng-href="/#/editProduct/{{product._id}}">{{"edit"|localize}}</a>
-                        <a class="btn btn-danger delete-product" ng-href="/#/removeProduct/{{product._id}}">{{"remove"|localize}}</a>
+                        <a class="btn btn-primary edit-product" ng-href="/#/editProduct/{{product._id}}" ng-show="canEdit(product)">{{"edit"|localize}}</a>
+                        <a class="btn btn-danger delete-product" ng-href="/#/removeProduct/{{product._id}}" ng-show="canDelete(product)">{{"remove"|localize}}</a>
                     </div>
                 </div>
             </div>
