@@ -46,6 +46,33 @@ define(['./module', '../app'], function (services) {
                                 //todo
                             }
                         );
+                    }, login: function(user) {
+                        return $http.post('/login', user);
+                    }, isLoggedIn: function() {
+                        return $http.get('/loggedin');
+                    }, logout: function() {
+                        return $http.post('/logout');
+                    }
+                }
+            })
+            .factory('User', function(UserService, $http, $q) {
+                var name;
+                var group;
+                return {
+                    isLoggedIn: function() {
+                        return typeof name === 'string';
+                    }, getUserName: function() {
+                        return name;
+                    }, checkIsLoggedIn: function() {
+                        var delay = $q.defer();
+                        UserService.isLoggedIn().then(function(response) {
+                            name = response.data.username;
+                            group = response.data.group;
+                            delay.resolve(name);
+                        });
+                        return delay.promise;
+                    }, isAdmin: function() {
+                        return group === 'admin';
                     }
                 }
             })

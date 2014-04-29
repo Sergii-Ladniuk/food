@@ -35,6 +35,7 @@ exports.remove = function (request, response) {
 };
 
 exports.import = function (request, response) {
+    console.log('importing from ' + request.files.uploadedFile.path);
     var parsedJSON = require(request.files.uploadedFile.path);
 
     // skip description; replace in all number properties comma with point;

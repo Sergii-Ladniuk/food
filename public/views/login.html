@@ -1,0 +1,47 @@
+<div>
+    <form name="loginForm" id="loginForm" class="form-horizontal" ng-submit="login()">
+        <div class="form-group">
+            <label class="control-label col-lg-4" for="userName">Login:</label>
+
+            <div class="col-lg-8">
+                <input class="input-sm form-control" name="userName" id="userName"
+                       ng-model="user.name" required placeholder="User name or email..."
+                       ng-maxlength="30" focus/>
+
+                <div class="label label-danger"
+                     ng-show="(loginForm.userName.$dirty || submitted) && loginForm.userName.$error.required">
+                    Required
+                </div>
+            </div>
+            <div class="label label-danger"
+                 ng-show="(loginForm.userName.$dirty || submitted) && loginForm.userName.$error.maxlength">
+                Maximum length for this field is 30.
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-4" for="userName">Password:</label>
+
+            <div class="col-lg-8">
+                <input class="input-sm form-control" name="password" id="password"
+                       type="password" ng-model="user.password" required
+                       ng-maxlength="30" focus/>
+
+                <div class="label label-danger"
+                     ng-show="(loginForm.userName.$dirty || submitted) && loginForm.password.$error.maxlength">
+                    Maximum length for this field is 30.
+                </div>
+                <div class="label label-danger"
+                     ng-show="(loginForm.userName.$dirty || submitted) && loginForm.password.$error.credentials">
+                    Invalid user name or password.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-8  col-lg-offset-4">
+                <button type="button" class="btn btn-primary" ng-click="login()">Submit
+                </button>
+            </div>
+        </div>
+    </form>
+    <span ng-show="loggedUser.isLoggedIn()">{{loggedUser.getUserName()}}</span>
+</div>

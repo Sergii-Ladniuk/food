@@ -1,5 +1,14 @@
-define(['./module', '../app'], function (controllers) {
+define(['./module', '../app', 'jQuery'], function (controllers) {
     'use strict';
+
+    // Fix input element click problem in drop-down forms
+    $(function() {
+        $('.dropdown input, .dropdown label, .dropdown *').click(function(e) {
+            e.stopPropagation();
+        });
+    });
+
+
     controllers.controller(
         'SignupController',
         function ($scope, $location, UserService) {
@@ -10,7 +19,7 @@ define(['./module', '../app'], function (controllers) {
                     $scope.user.password === $scope.user.confirmPassword);
             };
             $scope.verifyUserNotExists = function () {
-                UserService.isUserExists($scope.user.name).then(
+                UserService.isUserExists($scope.user.username).then(
                     function ok(userExists) {
                         $scope.signupForm.userName.$setValidity('exists', !userExists);
                     }, function error(err) {

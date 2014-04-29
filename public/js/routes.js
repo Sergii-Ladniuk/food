@@ -38,6 +38,9 @@ define(
 					}).when('/signup', {
 						controller: 'SignupController',
 						templateUrl: '/views/signup.html'
+                    }).when('/login', {
+                        controller: 'LoginController',
+                        templateUrl: '/views/login.html'
                     }).otherwise({ redirectTo: '/'})
             }
         ]);

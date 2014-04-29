@@ -14,3 +14,31 @@ exports.save = function (request, response) {
     dao.save(user, Callbacks.saveCallback(response));
 };
 
+//exports.login = function (request, response) {
+//    // todo : save password hash instead
+//    var user = request.body;
+//    UserModel.findOne({name : user.name}, function(err, res) {
+//        if (!err && res) {
+//            if (res.password === user.password) {
+//                response.send({
+//                    status: 'ok',
+//                    answer: 'accept'
+//                });
+//            } else {
+//                response.send({
+//                    status: 'ok',
+//                    answer: 'reject'
+//                })
+//            }
+//        } else {
+//            console.log(err);
+//            response.send({
+//                status: 'fail'
+//            });
+//        }
+//    });
+//};
+//
+exports.getCurrentUser = function(request, response) {
+    response.send(request.isAuthenticated() ? request.user : '0');
+};
