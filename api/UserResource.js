@@ -14,10 +14,6 @@ exports.save = function (request, response) {
     dao.save(user, Callbacks.saveCallback(response));
 };
 
-exports.getCurrentUser = function(request, response) {
-    response.send(request.isAuthenticated() ? request.user : '0');
-};
-
 exports.list = function (request, response) {
     var query = UserModel.find({}).sort('username');
     if (request.query.pageNumber) {
