@@ -14,31 +14,44 @@ exports.save = function (request, response) {
     dao.save(user, Callbacks.saveCallback(response));
 };
 
-//exports.login = function (request, response) {
-//    // todo : save password hash instead
-//    var user = request.body;
-//    UserModel.findOne({name : user.name}, function(err, res) {
-//        if (!err && res) {
-//            if (res.password === user.password) {
-//                response.send({
-//                    status: 'ok',
-//                    answer: 'accept'
-//                });
-//            } else {
-//                response.send({
-//                    status: 'ok',
-//                    answer: 'reject'
-//                })
-//            }
-//        } else {
-//            console.log(err);
-//            response.send({
-//                status: 'fail'
-//            });
-//        }
-//    });
-//};
-//
 exports.getCurrentUser = function(request, response) {
     response.send(request.isAuthenticated() ? request.user : '0');
 };
+
+exports.list = function (request, response) {
+    var query = UserModel.find({}).sort('username');
+    if (request.query.pageNumber) {
+        var pageNumber = request.query.pageNumber - 1;
+        var pageSize = request.query.pageSize || 20;
+        query = query.skip(pageSize * pageNumber).limit(pageSize);
+    }
+    query.exec(Callbacks.loadCallback(response));
+};
+
+exports.count = function(request, response) {
+    UserModel.count({}, function(err, count) {
+        var result = {};
+        if (err) {
+            response.statusCode = 500;
+            console.log(err);
+            result.status = 'fail';
+        } else {
+            result.status = 'ok';
+            result.count = count;
+        }
+        response.send(result);
+    })
+};
+
+exports.remove = function (request, response) {
+    UserModel.findOne({username: request.params.id}, function (err, result) {
+        if (!err) {
+            result.remove();
+            response.send({ status: 'ok' });
+        } else {
+            response.status = 404;
+            response.send('Product not found.');
+        }
+    });
+};
+

@@ -2,7 +2,7 @@ define(['./module', '../app'], function (controllers) {
         'use strict';
         controllers
             .controller('AdminController',
-            function ($scope, ProductFileUploadService, AdminService) {
+            function ($scope, ProductFileUploadService, AdminService, UserService, $location) {
                 $scope.clear = function () {
                     $scope.uploadedFile = null;
                     $scope.upload_button_state = false;
@@ -44,7 +44,34 @@ define(['./module', '../app'], function (controllers) {
                     }, function fail(result) {
                         alert('Failed delete all products. ' + result);
                     });
-                }
+                };
+
+                $scope.pageSize = 20;
+                $scope.maxPageCount = 5;
+                $scope.pageSelected = function(page) {
+                    $scope.currentPage = page;
+                    $scope.users = UserService.getUsersPage($scope.currentPage, $scope.pageSize);
+                };
+                $scope.pageSelected(1);
+
+                var updateUserCount = function() {
+                    UserService.getUserCount().then(
+                        function success(res) {
+                            $scope.totalCount = res.count;
+                        }, function fail() {
+                            // todo
+                        }
+                    );
+                };
+
+                updateUserCount();
+
+                $scope.removeUser = function(user) {
+                    user.$remove({id: user.username}, function (user) {
+                        updateUserCount();
+                        $scope.pageSelected($scope.currentPage);
+                    });
+                };
             }
         )
     }

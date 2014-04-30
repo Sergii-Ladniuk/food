@@ -104,4 +104,4 @@ exports.countProducts = function(request, response) {
         }
         response.send(result);
     })
-}
+};

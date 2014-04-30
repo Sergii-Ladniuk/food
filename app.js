@@ -72,11 +72,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    console.log('deserialize...');
     UserModel.findOne({username: id}, function (err, user) {
-        console.log('deserialize ');
-        console.log(user);
-        console.log(err);
         done(err, user);
     });
 });
@@ -107,8 +103,13 @@ app.delete('/products/:id', products.canEdit, products.remove);
 app.delete('/collection/products', isAdmin, products.deleteAllProducts);
 app.get('/count/products', products.countProducts);
 
-app.get('/user/:id', users.get);
+app.get('/user/:id', isAdmin, users.get);
+app.get('/user', isAdmin, users.list);
 app.post('/user', users.save);
+app.get('/count/user', isAdmin, users.count);
+app.delete('/user/:id', isAdmin, users.remove);
+
+
 app.post('/login',
     passport.authenticate('local', { successRedirect: '/#/'})
 );

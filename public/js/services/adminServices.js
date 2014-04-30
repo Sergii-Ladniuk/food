@@ -21,7 +21,7 @@ define(['./module', '../app'], function (services) {
             .factory('UserResource', function ($resource) {
                 return $resource('/user/:id', {id: '@id'}, {save: {method: 'POST'}});
             })
-            .factory('UserService', function($http, $q, UserResource) {
+            .factory('UserService', function ($http, $q, UserResource) {
                 return {
                     createUser: function () {
                         return new UserResource();
@@ -46,34 +46,49 @@ define(['./module', '../app'], function (services) {
                                 //todo
                             }
                         );
-                    }, login: function(user) {
+                    }, login: function (user) {
                         return $http.post('/login', user);
-                    }, isLoggedIn: function() {
+                    }, isLoggedIn: function () {
                         return $http.get('/loggedin');
-                    }, logout: function() {
+                    }, logout: function () {
                         return $http.post('/logout');
+                    }, getUsersPage: function (pageNumber, pageSize) {
+                        var deferred = $q.defer();
+                        UserResource.query(
+                            {
+                                "pageNumber": pageNumber,
+                                "pageSize": pageSize
+                            }, function (res) {
+                                deferred.resolve(res);
+                            }, function () {
+                                deferred.reject('Unable to fetch a users page');
+                            }
+                        );
+                        return deferred.promise;
+                    }, getUserCount: function() {
+                        return $http.get('/count/user');
                     }
                 }
             })
-            .factory('User', function(UserService, $http, $q) {
+            .factory('User', function (UserService, $http, $q) {
                 var name;
                 var group;
                 return {
-                    isLoggedIn: function() {
+                    isLoggedIn: function () {
                         return typeof name === 'string';
-                    }, getUserName: function() {
+                    }, getUserName: function () {
                         return name;
-                    }, checkIsLoggedIn: function() {
+                    }, checkIsLoggedIn: function () {
                         var delay = $q.defer();
-                        UserService.isLoggedIn().then(function(response) {
+                        UserService.isLoggedIn().then(function (response) {
                             name = response.data.username;
                             group = response.data.group;
                             delay.resolve(name);
                         });
                         return delay.promise;
-                    }, isAdmin: function() {
+                    }, isAdmin: function () {
                         return group === 'admin';
-                    }, isModerator: function() {
+                    }, isModerator: function () {
                         return group === 'admin' || group === 'moderator';
                     }
                 }
