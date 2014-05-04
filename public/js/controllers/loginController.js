@@ -1,7 +1,8 @@
 define(['./module', '../app'], function (controllers) {
     'use strict';
-    controllers.controller('LoginController', function ($scope, $location, UserService, User) {
+    controllers.controller('LoginController', function ($scope, $location, $routeParams, UserService, User) {
             User.checkIsLoggedIn();
+            $scope.expired = $routeParams.expired;
             $scope.loggedUser = User;
             $scope.user = {};
             $scope.submitted = false;
@@ -14,9 +15,13 @@ define(['./module', '../app'], function (controllers) {
                 });
                 if (!$scope.loginForm.$invalid) {
                     UserService.login($scope.user).then(function (response) {
-                        // a hack to hide login form
-                        $('.navbar-header').click();
                         User.checkIsLoggedIn();
+                        if ($routeParams.forward) {
+                            $location.url('/');
+                        } else {
+                            // a hack to hide login form
+                            $('.navbar-header').click();
+                        }
                     }, function (response) {
                         if (response.status === 401) {
                             $scope.loginForm.password.$setValidity('credentials', false);

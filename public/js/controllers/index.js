@@ -3,6 +3,7 @@ define([
     './adminController',
 	'./signupController',
     './loginController',
-    './mainController'
+    './mainController',
+    './errorController'
     ], function() {}
 );

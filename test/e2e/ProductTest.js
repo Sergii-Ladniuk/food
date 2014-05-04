@@ -1,49 +1,9 @@
 var webdriver = require('selenium-webdriver');//.WebDriver.prototype;
 var productName = 'dummy product';
-
-var HomePage = {
-    goProducts: element(by.id('go-products'))
-};
-
-var EditProductPage = {
-    build: function () {
-        return {
-            header: element(by.css('.editProductForm-header')),
-            title: element(by.model('product.title')),
-            description: element(by.model('product.description')),
-            calories: element(by.model('product.calories')),
-            proteins: element(by.model('product.proteins')),
-            fats: element(by.model('product.fats')),
-            carbs: element(by.model('product.carbs')),
-            saveProduct: element(by.id('save-product')),
-            dummyFill: function () {
-                this.title.sendKeys(productName);
-                this.description.sendKeys('dummy description');
-                this.calories.sendKeys('1234');
-                this.proteins.sendKeys('2345');
-                this.fats.sendKeys('123');
-                this.carbs.sendKeys('456');
-            }
-        }
-    }
-};
-
-var ProductList = {
-    newProduct: element(by.id('new-product-btn')),
-    targetEntry: function (text) {
-        var entryEl = element(by.xpath('//div[@class = "thumbnail" and contains(., "' + text + '")]'));
-        return {
-            description: entryEl.findElement(by.css('.view-description')),
-            calories: entryEl.findElement(by.css('.view-calories')),
-            fats: entryEl.findElement(by.css('.view-fats')),
-            proteins: entryEl.findElement(by.css('.view-proteins')),
-            carbs: entryEl.findElement(by.css('.view-carbs')),
-            editProduct: entryEl.findElement(by.css('.edit-product')),
-            deleteProduct: entryEl.findElement(by.css('.delete-product'))
-        }
-    }
-};
-
+exports.productName = productName;
+var HomePage = require('./pageobjects/homePage.js').HomePage;
+var EditProductPage = require('./pageobjects/editProductPage.js').EditProductPage;
+var ProductList = require('./pageobjects/productListPage.js').ProductList;
 var DeleteProductPage = {
     build: function () {
         return {
@@ -55,11 +15,20 @@ var DeleteProductPage = {
 }
 
 
-describe('Products', function () {
+describe('Products: ', function () {
+
     beforeEach(function () {
-        browser.get('http://localhost:3000/#/');
         HomePage.goProducts.click();
     });
+//    afterEach(function () {
+//        HomePage.logout();
+//    });
+
+    it('login', function() {
+        browser.get('http://localhost:3000/#/');
+        HomePage.loginAdmin();
+    });
+
     it('As a user I want to create a product', function () {
         ProductList.newProduct.click();
         var editProductPage = EditProductPage.build();
@@ -98,7 +67,7 @@ describe('Products', function () {
         expect((deleteForm.question.getText())).toEqual("Вы действительно хотите удалить продукт '" + productName + "'?");
         deleteForm.delete.click();
     });
-    it('As an administrator I want the product title to be mandatory', function() {
+    it('As an administrator I want the product title to be mandatory', function () {
         ProductList.newProduct.click();
         var editProductPage = EditProductPage.build();
         editProductPage.description.sendKeys('dummy description');
@@ -108,7 +77,7 @@ describe('Products', function () {
         editProductPage.carbs.sendKeys('456');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
-    it('As an administrator I want the calories to be less than 10000', function() {
+    it('As an administrator I want the calories to be less than 10000', function () {
         ProductList.newProduct.click();
         var editProductPage = EditProductPage.build();
         editProductPage.title.sendKeys('dummy product');
@@ -119,7 +88,7 @@ describe('Products', function () {
         editProductPage.carbs.sendKeys('456');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
-    it('As an administrator I want the calories to be more than 0 (positive only)', function() {
+    it('As an administrator I want the calories to be more than 0 (positive only)', function () {
         ProductList.newProduct.click();
         var editProductPage = EditProductPage.build();
         editProductPage.title.sendKeys('dummy product');
@@ -129,5 +98,9 @@ describe('Products', function () {
         editProductPage.fats.sendKeys('123');
         editProductPage.carbs.sendKeys('456');
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
+    });
+
+    it('logout', function() {
+        HomePage.logout();
     });
 });
