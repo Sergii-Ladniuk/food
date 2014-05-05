@@ -256,7 +256,7 @@ describe('Product API : ', function () {
     describe('#count()', function () {
         it('should return 0 when there is no products', function (done) {
             db.dropCollection('products', function () {
-                ProductResource.countProducts(
+                ProductResource.count(
                     emptyRequest, {
                         send: function (data) {
                             console.log(data);
@@ -276,7 +276,7 @@ describe('Product API : ', function () {
                         ProductResource.save(dummySaveProductRequest(2),
                             {
                                 send: function () {
-                                    ProductResource.countProducts(
+                                    ProductResource.count(
                                         emptyRequest, {
                                             send: function (data) {
                                                 console.log(data);

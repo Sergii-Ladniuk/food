@@ -47,7 +47,7 @@ app.get('/products', products.list);
 app.get('/products/:id', products.get);
 app.delete('/products/:id', products.canEdit, products.remove);
 app.delete('/collection/products', auth.isAdmin, products.deleteAllProducts);
-app.get('/count/products', products.countProducts);
+app.get('/count/products', products.count);
 
 app.get('/user/:id', users.get);
 app.get('/user', auth.isAdmin, users.list);
