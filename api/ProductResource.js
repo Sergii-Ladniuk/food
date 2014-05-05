@@ -4,7 +4,10 @@ var dao = require('../data/dao/GenericDao.js').Dao.create(ProductModel);
 var Callbacks = require('./generic/ResourceCallback.js').Callbacks.create('Product');
 var nativeMongoDB = require('../data/schema/DB.js').mangoose.connection.db;
 
-exports.save = function (request, response) {
+ProductResource = {};
+
+
+ProductResource.save = function (request, response) {
     dao.save(request.body, Callbacks.saveCallback(response));
 };
 
@@ -24,10 +27,10 @@ var isOwnerOrModerator = function (request, response, next) {
     }
 };
 
-exports.canEdit = isOwnerOrModerator;
-exports.canDelete = isOwnerOrModerator;
+ProductResource.canEdit = isOwnerOrModerator;
+ProductResource.canDelete = isOwnerOrModerator;
 
-exports.list = function (request, response) {
+ProductResource.list = function (request, response) {
     var query = ProductModel.find({}).sort('title');
     if (request.query.pageNumber) {
         var pageNumber = request.query.pageNumber - 1;
@@ -37,23 +40,28 @@ exports.list = function (request, response) {
     query.exec(Callbacks.loadCallback(response));
 };
 
-exports.get = function (request, response) {
+ProductResource.get = function (request, response) {
     ProductModel.findOne({_id: request.params.id}, Callbacks.loadCallback(response));
 };
 
-exports.remove = function (request, response) {
+ProductResource.remove = function (request, response) {
     ProductModel.findOne({_id: request.params.id}, function (err, result) {
         if (!err) {
-            result.remove();
-            response.send({ status: 'ok' });
+            result.remove(function(err) {
+                if (!err) {
+                    response.send({ status: 'ok' });
+                } else {
+                    console.log(err);
+                    response.send(500);
+                }
+            });
         } else {
-            response.status = 404;
-            response.send('Product not found.');
+            response.send(404);
         }
     });
 };
 
-exports.import = function (request, response) {
+ProductResource.import = function (request, response) {
     console.log('importing from ' + request.files.uploadedFile.path);
     var parsedJSON = require(request.files.uploadedFile.path);
 
@@ -77,7 +85,7 @@ exports.import = function (request, response) {
     dao.insertAll(parsedJSON.products, preprocessF, Callbacks.saveCallback(response));
 };
 
-exports.deleteAllProducts = function (request, response) {
+ProductResource.deleteAllProducts = function (request, response) {
     var collectionName = ProductCollection.collectionName().toLowerCase();
     console.log('trying to drop ' + collectionName);
     nativeMongoDB.dropCollection(collectionName, function (err) {
@@ -91,7 +99,7 @@ exports.deleteAllProducts = function (request, response) {
     });
 };
 
-exports.countProducts = function(request, response) {
+ProductResource.countProducts = function(request, response) {
     ProductModel.count({}, function(err, count) {
         var result = {};
         if (err) {
@@ -105,3 +113,5 @@ exports.countProducts = function(request, response) {
         response.send(result);
     })
 };
+
+exports.ProductResource = ProductResource;

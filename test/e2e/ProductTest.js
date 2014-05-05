@@ -14,11 +14,24 @@ var DeleteProductPage = {
     }
 };
 
+var UserModel = require('../../data/schema/UserModel').UserModel;
+var UserDao = require('../../data/dao/GenericDao.js').Dao.create(UserModel);
+var db = require('../../data/schema/DB.js').mangoose.connection.db;
 
 describe('Products: ', function () {
 
+    db.dropCollection('users', function() {
+        UserDao.save({
+            username: 'admin',
+            password: 'admin',
+            email: 'admin@mail.com',
+            group: 'admin'
+        }, function() {
+        });
+    });
+
     beforeEach(function () {
-        browser.get('http://localhost:3000/#/');
+        browser.get('http://localhost:3001/#/');
         HomePage.goProducts.click();
     });
 //    afterEach(function () {

@@ -8,7 +8,7 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var products = require('./api/ProductResource');
+var products = require('./api/ProductResource').ProductResource;
 var users = require('./api/UserResource');
 var auth = require('./api/Auth');
 
@@ -17,7 +17,7 @@ var app = express();
 module.exports = app;
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.port || 3000);
 app.set('views', __dirname + '/views');
 app.use(express.favicon());
 app.use(express.logger('dev'));

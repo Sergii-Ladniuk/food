@@ -13,12 +13,12 @@ exports.Callbacks = {
                     }
                 }
             }, saveCallback: function (response) {
-                return function (err) {
+                return function (err, result) {
                     if (err) {
                         console.log(err);
                         response.send(500);
                     } else {
-                        response.send({ status: 'ok' });
+                        response.send({ status: 'ok', id: result._id });
                     }
                 }
             }, deleteCallback: function (response) {

@@ -1,11 +1,25 @@
 var HomePage = require('./pageobjects/homePage.js').HomePage;
 var SignupPage = require('./pageobjects/signupPage.js').SignupPage;
-var AdminPage= require('./pageobjects/adminPage').AdminPage;
+var AdminPage = require('./pageobjects/adminPage').AdminPage;
+var UserModel = require('../../data/schema/UserModel').UserModel;
+var UserDao = require('../../data/dao/GenericDao.js').Dao.create(UserModel);
+var db = require('../../data/schema/DB.js').mangoose.connection.db;
 
 describe('Signup: ', function () {
-    beforeEach(function () {
-        browser.get('http://localhost:3000/#/');
+    db.dropCollection('users', function() {
+        UserDao.save({
+            username: 'admin',
+            password: 'admin',
+            email: 'admin@mail.com',
+            group: 'admin'
+        }, function() {
+        });
     });
+
+    beforeEach(function() {
+        browser.get('http://localhost:3001/#/');
+    });
+
     it('As a user I want to register an account', function () {
         HomePage.signup.click();
         var signupPage = SignupPage.build();
