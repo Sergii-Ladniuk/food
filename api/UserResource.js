@@ -3,7 +3,18 @@ var Callbacks = require('./generic/ResourceCallback.js').Callbacks.create('Produ
 var dao = require('../data/dao/GenericDao.js').Dao.create(UserModel);
 
 exports.get = function (request, response) {
-    UserModel.findOne({name : request.params.id}, Callbacks.loadCallback(response));
+    if (request.query.checkExists) {
+        UserModel.findOne({username : request.params.id}, function (err, user) {
+            if (err) {
+                console.log(err);
+                response.send(500);
+            } else {
+                response.send({answer: user ? 'yes' : 'no'});
+            }
+        });
+    } else {
+        UserModel.findOne({username : request.params.id}, Callbacks.loadCallback(response));
+    }
 };
 
 exports.save = function (request, response) {

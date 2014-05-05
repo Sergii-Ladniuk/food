@@ -1,5 +1,6 @@
 var HomePage = require('./pageobjects/homePage.js').HomePage;
 var SignupPage = require('./pageobjects/signupPage.js').SignupPage;
+var AdminPage= require('./pageobjects/adminPage').AdminPage;
 
 describe('Signup: ', function () {
     beforeEach(function () {
@@ -14,7 +15,25 @@ describe('Signup: ', function () {
         signupPage.confirmPassword.sendKeys('dummy password');
         signupPage.submit.click();
     });
-    it('As an admin I want to delete a user account', function () {
+    it('As a user I want to login using my new account', function () {
+        HomePage.loginAs('dummy user', 'dummy password');
+        expect(HomePage.currentUser.getText()).toEqual('dummy user');
+        HomePage.logout();
+    });
+    it('As an admin I want to see a user in the list', function () {
+        HomePage.loginAdmin();
         HomePage.goAdmin.click();
+        var adminPage = AdminPage.build();
+        adminPage.usersTab.click();
+        expect(adminPage.usersTab.nameElement('dummy user').getText()).toEqual('dummy user');
+        HomePage.logout();
+    });
+    it('As an admin I want to delete a user account', function () {
+        HomePage.loginAdmin();
+        HomePage.goAdmin.click();
+        var adminPage = AdminPage.build();
+        adminPage.usersTab.click();
+        adminPage.usersTab.removeUser('dummy user');
+        HomePage.logout();
     });
 });

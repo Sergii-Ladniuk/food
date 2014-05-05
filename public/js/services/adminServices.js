@@ -19,7 +19,15 @@ define(['./module', '../app'], function (services) {
                 }
             })
             .factory('UserResource', function ($resource) {
-                return $resource('/user/:id', {id: '@id'}, {save: {method: 'POST'}});
+                return $resource('/user/:id', {id: '@id'},
+                    {
+                        save: {method: 'POST'},
+                        exists: {
+                            method: 'GET',
+                            params: { checkExists: true }
+                        }
+
+                    });
             })
             .factory('UserService', function ($http, $q, UserResource) {
                 return {
@@ -27,13 +35,10 @@ define(['./module', '../app'], function (services) {
                         return new UserResource();
                     }, isUserExists: function (userName) {
                         var delay = $q.defer();
-                        UserResource.get(
+                        UserResource.exists(
                             {id: userName},
                             function success(response) {
-                                delay.resolve(response.status !== 'fail');
-                            },
-                            function fail(err) {
-                                delay.resolve(false);
+                                delay.resolve(response.answer === 'yes');
                             }
                         );
                         return delay.promise;
@@ -65,7 +70,7 @@ define(['./module', '../app'], function (services) {
                             }
                         );
                         return deferred.promise;
-                    }, getUserCount: function() {
+                    }, getUserCount: function () {
                         return $http.get('/count/user');
                     }
                 }
@@ -109,7 +114,7 @@ define(['./module', '../app'], function (services) {
                     }
                 };
             }
-
         );
     }
-);
+)
+;

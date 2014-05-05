@@ -59,7 +59,7 @@
 
         </form>
     </tab>
-    <tab heading="Users">
+    <tab heading="Users" id="users-tab">
         <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
                     class="pagination-sm" on-select-page="pageSelected(page)"
                     boundary-links="true" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
@@ -74,10 +74,10 @@
             </thead>
             <tbody ng-repeat="user in users">
                 <tr>
-                    <td>{{user.username}}</td>
+                    <td id="name-{{user.username}}">{{user.username}}</td>
                     <td>{{user.group}}</td>
                     <td>
-                        <button class="btn btn-danger" ng-click="removeUser(user)">Remove</button>
+                        <button class="btn btn-danger" ng-click="removeUser(user)" id="remove-{{user.username}}">Remove</button>
                     </td>
                 </tr>
             </tbody>

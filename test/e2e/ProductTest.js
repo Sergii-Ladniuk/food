@@ -12,12 +12,13 @@ var DeleteProductPage = {
             cancel: element(by.id('cancel'))
         }
     }
-}
+};
 
 
 describe('Products: ', function () {
 
     beforeEach(function () {
+        browser.get('http://localhost:3000/#/');
         HomePage.goProducts.click();
     });
 //    afterEach(function () {
@@ -25,7 +26,6 @@ describe('Products: ', function () {
 //    });
 
     it('login', function() {
-        browser.get('http://localhost:3000/#/');
         HomePage.loginAdmin();
     });
 

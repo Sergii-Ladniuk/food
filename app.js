@@ -49,7 +49,7 @@ app.delete('/products/:id', products.canEdit, products.remove);
 app.delete('/collection/products', auth.isAdmin, products.deleteAllProducts);
 app.get('/count/products', products.countProducts);
 
-app.get('/user/:id', auth.isAdmin, users.get);
+app.get('/user/:id', users.get);
 app.get('/user', auth.isAdmin, users.list);
 app.post('/user', users.save);
 app.get('/count/user', auth.isAdmin, users.count);

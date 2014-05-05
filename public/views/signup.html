@@ -1,7 +1,7 @@
 <h3 class="custom-form-header">New User Registration</h3>
 <form name="signupForm" id="signupForm" class="form-horizontal" ng-submit="save()">
     <div class="form-group">
-        <label class="control-label col-lg-3" for="userName">Name:</label>
+        <label class="control-label col-lg-3" for="signup-username">Name:</label>
 
         <div class="col-lg-5">
             <input class="input-sm form-control" name="userName" id="signup-username" ng-model="user.username" required
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-lg-3" for="email">Email:</label>
+        <label class="control-label col-lg-3" for="signup-email">Email:</label>
 
         <div class="col-lg-5">
             <input type="email" class="input-sm form-control" id="signup-email" name="email" ng-model="user.email" required
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-lg-3" for="password">Password:</label>
+        <label class="control-label col-lg-3" for="signup-password">Password:</label>
 
         <div class="col-lg-5">
             <input type="password" class="input-sm form-control" id="signup-password" name="password" ng-model="user.password"
@@ -65,7 +65,7 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-lg-3" for="confirmPassword">Confirm Password:</label>
+        <label class="control-label col-lg-3" for="signup-confirmPassword">Confirm Password:</label>
 
         <div class="col-lg-5">
             <input type="password" class="input-sm form-control" id="signup-confirmPassword" name="confirmPassword"
