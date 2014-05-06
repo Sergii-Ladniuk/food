@@ -9,7 +9,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var products = require('./api/ProductResource').ProductResource;
-var users = require('./api/UserResource');
+var users = require('./api/UserResource').UserResource;
 var auth = require('./api/Auth');
 
 var app = express();

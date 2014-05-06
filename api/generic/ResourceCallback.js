@@ -12,6 +12,15 @@ exports.Callbacks = {
                         response.send(result);
                     }
                 }
+            }, checkExistsCallback: function (response) {
+                return function (err, result) {
+                    if (err) {
+                        console.log(err);
+                        response.send(500);
+                    } else {
+                        response.send({answer: result ? 'yes' : 'no'});
+                    }
+                }
             }, saveCallback: function (response) {
                 return function (err, result) {
                     if (err) {

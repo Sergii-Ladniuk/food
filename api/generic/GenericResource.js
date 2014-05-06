@@ -2,6 +2,13 @@ var Callbacks = require('./ResourceCallback.js').Callbacks.create('Product');
 
 exports.build = function (Model, Params) {
     var dao = require('../../data/dao/GenericDao.js').Dao.create(Model);
+
+    function findById(id, callback) {
+        var q = {};
+        q[Params.id || '_id'] = id;
+        Model.findOne(q, callback);
+    }
+
     return {
         model: Model,
         dao: dao,
@@ -22,10 +29,14 @@ exports.build = function (Model, Params) {
         }, get: function (request, response) {
             var q = {};
             q[Params.id || '_id'] = request.params.id;
-            Model.findOne(q, Callbacks.loadCallback(response));
+            if (request.query.checkExists) {
+                findById(request.params.id, Callbacks.checkExistsCallback(response));
+            } else {
+                findById(request.params.id, Callbacks.loadCallback(response));
+            }
         }, remove: function (request, response) {
-            Model.findOne({_id: request.params.id}, function (err, result) {
-                if (!err) {
+            findById(request.params.id, function (err, result) {
+                if (!err && result) {
                     result.remove(function (err) {
                         if (!err) {
                             response.send({ status: 'ok' });

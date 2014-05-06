@@ -18,10 +18,9 @@ var dummySaveProductRequest = function (index) {
     };
 };
 
-var emptyRequest = {
-    query: {},
-    params: {}
-};
+var tools = require('./tools');
+
+var spamProducts = tools.spammer(ProductResource, dummySaveProductRequest);
 
 var response = function (send) {
     (typeof send).should.equal('function');
@@ -185,7 +184,7 @@ describe('Product API : ', function () {
                 {
                     params: {
                         id: testData.productId
-                    }
+                    }, query: {}
                 }, {
                     send: function (data) {
                         console.log(data);
@@ -206,7 +205,7 @@ describe('Product API : ', function () {
                 {
                     params: {
                         id: '123213231'
-                    }
+                    }, query: {}
                 }, {
                     send: function (data) {
                         console.log(data);
@@ -257,7 +256,7 @@ describe('Product API : ', function () {
         it('should return 0 when there is no products', function (done) {
             db.dropCollection('products', function () {
                 ProductResource.count(
-                    emptyRequest, {
+                    tools.emptyRequest(), {
                         send: function (data) {
                             console.log(data);
                             should.exist(data);
@@ -277,7 +276,7 @@ describe('Product API : ', function () {
                             {
                                 send: function () {
                                     ProductResource.count(
-                                        emptyRequest, {
+                                        tools.emptyRequest(), {
                                             send: function (data) {
                                                 console.log(data);
                                                 should.exist(data);
@@ -295,23 +294,15 @@ describe('Product API : ', function () {
     });
 
     describe('#list()', function () {
+
         before(function (done) {
-            var spamProducts = function (current, limit, callback) {
-                if (current < limit) {
-                    ProductResource.save(dummySaveProductRequest(current), response(function () {
-                        spamProducts(current + 1, limit, callback);
-                    }));
-                } else {
-                    callback();
-                }
-            };
             db.dropCollection('products', function () {
-                spamProducts(0, 20, done)
+                spamProducts(20, done)
             });
         });
 
         it('should return 20 products when there is 20 in the database', function (done) {
-            ProductResource.list(emptyRequest,
+            ProductResource.list(tools.emptyRequest(),
                 response(function (data) {
                         console.log(data);
                         console.log(data.length);
@@ -325,7 +316,7 @@ describe('Product API : ', function () {
 
         it('should return the first page with size 5 having products ## 0,1,10,11,12 (sorted by title)', function (done) {
             ProductResource.list({
-                    query : {
+                    query: {
                         pageNumber: 1,
                         pageSize: 5
                     }
@@ -348,7 +339,7 @@ describe('Product API : ', function () {
 
         it('should return the second page with size 2 having products ## 10, 11 (sorted by title)', function (done) {
             ProductResource.list({
-                    query : {
+                    query: {
                         pageNumber: 2,
                         pageSize: 2
                     }
