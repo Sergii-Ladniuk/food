@@ -10,4 +10,4 @@ define(
             ng.bootstrap(document, ['hiking_food']);
         });
     }
-)
+);

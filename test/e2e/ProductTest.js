@@ -20,7 +20,6 @@ var db = require('../../data/schema/DB.js').mangoose.connection.db;
 
 describe('Products: ', function () {
 
-    db.dropCollection('users', function() {
         UserDao.save({
             username: 'admin',
             password: 'admin',
@@ -28,7 +27,6 @@ describe('Products: ', function () {
             group: 'admin'
         }, function() {
         });
-    });
 
     beforeEach(function () {
         browser.get('http://localhost:3001/#/');
@@ -116,4 +114,8 @@ describe('Products: ', function () {
     it('logout', function() {
         HomePage.logout();
     });
+
+    db.dropCollection('users', function () {
+    });
+
 });

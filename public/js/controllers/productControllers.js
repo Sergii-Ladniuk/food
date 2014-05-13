@@ -40,13 +40,7 @@ define(['./module', '../app'], function (controllers) {
             $scope.save = function () {
                 $scope.product.owner = User.getUserName();
                 $scope.product.$save(function (response) {
-                    if (response.status !== 'ok') {
-                        $scope.addAlert('Internal server error.');
-                    } else {
-                        $location.path('/');
-                    }
-                }, function(error) {
-                    alert('Internal server error. ' + error);
+                    $location.path('/');
                 });
             };
             $scope.cancel = function () {
@@ -58,8 +52,6 @@ define(['./module', '../app'], function (controllers) {
             $scope.save = function () {
                 $scope.product.$save(function (response) {
                     $location.path('/');
-                }, function(error) {
-                    alert('Internal server error. ' + error);
                 });
             };
             $scope.cancel = function () {
