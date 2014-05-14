@@ -26,12 +26,8 @@ var spam20Users = function (done) {
     }
 };
 
-function cleanup(callback) {
-    db.dropCollection('users', function (err) {
-        console.log(err);
-        callback();
-    });
-}
+// cleanup function
+var cleanup = tools.cleanup('users');
 
 function test(q) {
     return function (done) {

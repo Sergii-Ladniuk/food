@@ -17,6 +17,7 @@ var recipeSchema = mongoose.Schema({
     proteins: {type: Number, required: true, min: 0, max: 10000},
     fats: {type: Number, required: true, min: 0, max: 10000},
     carbs: {type: Number, required: true, min: 0, max: 10000},
+    weight: {type: Number, required: true, min: 0},
     owner: {type: String, required: true, validate: /^.{1,30}$/}
 })
 
@@ -26,4 +27,4 @@ exports.collectionName = function () {
     return COLLECTION_NAME + 's';
 }
 
-exports.ProductModel = mongoose.model(COLLECTION_NAME, recipeSchema);
+exports.RecipeModel = mongoose.model(COLLECTION_NAME, recipeSchema);
