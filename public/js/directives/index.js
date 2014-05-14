@@ -1,0 +1,4 @@
+define([
+        './smartFloat'
+    ], function() {}
+);

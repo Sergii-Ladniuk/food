@@ -31,14 +31,14 @@
         <label class="col-lg-2 control-label" for="calories">{{"calories"|localize}}:</label>
 
         <div class="col-lg-3">
-            <input type="number" min="0" max="10000" ng-model="product.calories" class="form-control input-sm"
+            <input smart-float type="text" min="0" max="10000" ng-model="product.calories" class="form-control input-sm"
                    id="calories" required/>
         </div>
 
         <label class="col-lg-4 control-label" for="proteins">{{"proteins"|localize}}:</label>
 
         <div class="col-lg-3">
-            <input type="text" min="0" max="10000" ng-model="product.proteins" class="form-control input-sm"
+            <input smart-float type="text" min="0" max="10000" ng-model="product.proteins" class="form-control input-sm"
                    id="proteins"
                    required/>
         </div>
@@ -48,14 +48,14 @@
         <label class="col-lg-2 control-label" for="fats">{{"fats"|localize}}:</label>
 
         <div class="col-lg-3">
-            <input type="number" min="0" max="10000" ng-model="product.fats" class="form-control input-sm" id="fats"
+            <input smart-float type="text" min="0" max="10000" ng-model="product.fats" class="form-control input-sm" id="fats"
                    required/>
         </div>
 
         <label class="col-lg-4 control-label" for="carbs">{{"carbs"|localize}}:</label>
 
         <div class="col-lg-3">
-            <input type="number" min="0" max="10000" ng-model="product.carbs" class="input-sm form-control" id="carbs"
+            <input smart-float type="text" min="0" max="10000" ng-model="product.carbs" class="input-sm form-control" id="carbs"
                    required/>
         </div>
 
@@ -70,7 +70,7 @@
     <!--<label class="col-lg-2 control-label" for="portion">{{"portion"|localize}}:</label>-->
 
     <!--<div class="col-lg-4">-->
-    <!--<input type="number" min="0" max="100000" ng-model="product.portion" class="form-control input-sm"-->
+    <!--<input smart-float type="text" min="0" max="100000" ng-model="product.portion" class="form-control input-sm"-->
     <!--id="portion"-->
     <!--required/>-->
 
