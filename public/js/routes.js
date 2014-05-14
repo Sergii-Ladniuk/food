@@ -8,6 +8,8 @@ define(
             function ($routeProvider, $httpProvider) {
                 $routeProvider.
                     when('/', {
+                        templateUrl: '/views/homePage.html'
+                    }).when('/products', {
                         controller: 'ProductListController',
                         templateUrl: '/views/productList.html'
                     }).when('/admin', {
@@ -32,8 +34,20 @@ define(
                             }]
                         },
                         templateUrl: '/views/removeProductForm.html'
+                    }).when('/recipes', {
+                        controller: 'RecipeListController',
+                        templateUrl: '/views/recipeList.html'
                     }).when('/newRecipe', {
-                        controller: 'NewRecipeController',
+                        controller: 'EditRecipeController',
+                        resolve: {
+                            isNew: function () {return true}
+                        },
+                        templateUrl: '/views/editRecipeForm.html'
+                    }).when('/editRecipe', {
+                        controller: 'EditRecipeController',
+                        resolve: {
+                            isNew: function () {return false}
+                        },
                         templateUrl: '/views/editRecipeForm.html'
                     }).when('/signup', {
                         controller: 'SignupController',

@@ -4,6 +4,7 @@ define([
 	'./signupController',
     './loginController',
     './mainController',
+    './recipeControllers',
     './errorController'
     ], function() {}
 );

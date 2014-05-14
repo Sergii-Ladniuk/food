@@ -1,4 +1,4 @@
-define(['angular', './translations/productTranslations', './translations/generalTranslations'], function (ng) {
+define(['angular', './translations/productTranslations', './translations/generalTranslations', './translations/recipeTranslations'], function (ng) {
     'use strict';
     var localization = ng.module('localization', ['translations']);
 
@@ -22,9 +22,9 @@ define(['angular', './translations/productTranslations', './translations/general
         }
     });
 
-    localization.filter("localize", function (productTranslations, generalTranslations) {
+    localization.filter("localize", function (productTranslations, generalTranslations, recipeTranslations) {
         var t = {};
-        ng.forEach([productTranslations, generalTranslations], function (item) {
+        ng.forEach([productTranslations, recipeTranslations, generalTranslations], function (item) {
             for (var prop in item) {
                 t[prop] = item[prop];
             }
