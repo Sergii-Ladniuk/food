@@ -50,7 +50,9 @@ define(['./module', '../app'], function (controllers) {
                 $scope.maxPageCount = 5;
                 $scope.pageSelected = function(page) {
                     $scope.currentPage = page;
-                    $scope.users = UserService.getUsersPage($scope.currentPage, $scope.pageSize);
+                    UserService.getUsersPage($scope.currentPage, $scope.pageSize).then(function(users) {
+                        $scope.users = users;
+                    });
                 };
                 $scope.pageSelected(1);
 
@@ -58,8 +60,6 @@ define(['./module', '../app'], function (controllers) {
                     UserService.getUserCount().then(
                         function success(res) {
                             $scope.totalCount = res.count;
-                        }, function fail() {
-                            // todo
                         }
                     );
                 };
