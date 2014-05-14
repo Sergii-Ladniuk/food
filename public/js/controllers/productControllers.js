@@ -6,7 +6,9 @@ define(['./module', '../app'], function (controllers) {
             $scope.maxPageCount = 5;
             $scope.pageSelected = function(page) {
                 $scope.currentPage = page;
-                $scope.products = ProductListLoader.getPage($scope.currentPage, $scope.pageSize);
+                ProductListLoader.getPage($scope.currentPage, $scope.pageSize).then(function(res) {
+                    $scope.products = res;
+                });
             };
             $scope.pageSelected(1);
             ProductListLoader.totalCount(

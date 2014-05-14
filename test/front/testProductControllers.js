@@ -26,7 +26,11 @@ define([
                         owner: 'user'
                     };
                 }
-                return result;
+                return {
+                    then : function(callback) {
+                        callback(result);
+                    }
+                }
             }
         };
 
