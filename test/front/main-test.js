@@ -31,7 +31,9 @@ require.config({
     },
     deps: [
         'base/public/js/bootstrap.js',
-        'base/test/front/testProductControllers.js'
+        'base/test/front/testProductControllers.js',
+        'base/test/front/testRecipeControllers.js',
+        'base/test/front/testProductService.js'
     ],
     callback: window.__karma__.start
 });

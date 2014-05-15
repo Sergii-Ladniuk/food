@@ -10,6 +10,10 @@ define([
 ], function (angular, mocks, app) {
     'use strict';
 
+    var Urls = {
+        products: '/products'
+    }
+
     describe('product list controller: ', function () {
 
         var ProductListController;
@@ -44,7 +48,9 @@ define([
             ProductListController = $controller('ProductListController', {
                 $scope: scope,
                 ProductListLoader: ProductListLoader,
-                User: User
+                User: User,
+                Urls: Urls,
+                $location: location
             })
         }))
 
@@ -121,7 +127,8 @@ define([
                     path: function (where) {
                         redirect = where;
                     }
-                }
+                },
+                Urls: Urls
             })
         }))
 
@@ -143,7 +150,7 @@ define([
             expect(scope.product.owner).toBeUndefined();
             scope.save();
             expect(saveCalled).toBeTruthy();
-            expect(redirect).toBe('/');
+            expect(redirect).toBe('/products');
         })
 
 

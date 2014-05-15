@@ -43,7 +43,7 @@ define(
                             isNew: function () {return true}
                         },
                         templateUrl: '/views/editRecipeForm.html'
-                    }).when('/editRecipe', {
+                    }).when('/editRecipe/:recipeId', {
                         controller: 'EditRecipeController',
                         resolve: {
                             isNew: function () {return false}

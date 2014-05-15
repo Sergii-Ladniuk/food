@@ -1,6 +1,8 @@
 define([
-    './productServices',
-    './recipeServices',
-    './adminServices'
-    ], function() {}
+        './productServices',
+        './recipeServices',
+        './adminServices',
+        './urls'
+    ], function () {
+    }
 );

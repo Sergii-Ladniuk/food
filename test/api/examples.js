@@ -17,6 +17,7 @@ exports.goodRecipe = function () {
         fats: 100.2,
         carbs: 100.2,
         weight: 100.2,
+        autocalc: true,
         owner: 'Vas'
     }
 };

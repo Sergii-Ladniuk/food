@@ -16,7 +16,7 @@ define(['./module', '../app'], function (services) {
                     return delay.promise;
                 },
                 totalCount: function (success, fail) {
-                    $http.get('/count/products').then(function(res){
+                    $http.get('/count/products').then(function (res) {
                         if (res.data.status === 'ok') {
                             success(res.data);
                         } else {
@@ -24,7 +24,7 @@ define(['./module', '../app'], function (services) {
                         }
                     }, fail);
                 },
-                getPage: function(pageNumber, pageSize) {
+                getPage: function (pageNumber, pageSize) {
                     var deferred = $q.defer();
                     Product.query(
                         {
@@ -32,7 +32,7 @@ define(['./module', '../app'], function (services) {
                             "pageSize": pageSize
                         }, function (res) {
                             deferred.resolve(res);
-                        }, function() {
+                        }, function () {
                             deferred.reject('Unable to fetch a product page');
                         }
                     );
@@ -50,5 +50,18 @@ define(['./module', '../app'], function (services) {
                 });
                 return delay.promise;
             };
-        });
+        })
+        .factory('ProductService', function (Product) {
+            return {
+                search: function (column, q, size, callback) {
+                    Product.query({
+                        "column": column,
+                        "pageNumber": 1,
+                        "pageSize": size,
+                        "q": q
+                    }, callback);
+                }
+            }
+
+        })
 });

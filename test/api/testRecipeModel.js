@@ -24,7 +24,7 @@ describe('Recipe Model : ', function () {
     })
     describe('validation: ', function () {
         it('should fail on missing required field - self', function (done) {
-            var mandatoryFields = ['title', 'carbs', 'proteins', 'fats', 'calories', 'weight', 'owner'];
+            var mandatoryFields = ['title', 'carbs', 'proteins', 'fats', 'calories', 'weight', 'owner', 'autocalc'];
             (function checkAll(index) {
                     var badRecipe = examples.goodRecipe();
                     var field = mandatoryFields[index];

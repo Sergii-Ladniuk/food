@@ -18,6 +18,7 @@ var recipeSchema = mongoose.Schema({
     fats: {type: Number, required: true, min: 0, max: 10000},
     carbs: {type: Number, required: true, min: 0, max: 10000},
     weight: {type: Number, required: true, min: 0},
+    autocalc: {type: Boolean, required: true},
     owner: {type: String, required: true, validate: /^.{1,30}$/}
 })
 
