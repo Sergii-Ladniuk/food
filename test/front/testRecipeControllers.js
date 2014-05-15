@@ -44,7 +44,11 @@ define([
             }, load: function (id) {
                 me.loadCalled = true;
                 me.loadedId = id;
-                return loadedRecipe;
+                return {
+                    then: function (callback) {
+                        callback(loadedRecipe);
+                    }
+                }
             }, delete: function (id) {
 
             }, save: function (recipe) {

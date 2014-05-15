@@ -33,7 +33,8 @@ require.config({
         'base/public/js/bootstrap.js',
         'base/test/front/testProductControllers.js',
         'base/test/front/testRecipeControllers.js',
-        'base/test/front/testProductService.js'
+        'base/test/front/testProductService.js',
+        'base/test/front/testRecipeService.js'
     ],
     callback: window.__karma__.start
 });

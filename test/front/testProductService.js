@@ -7,7 +7,7 @@ define([
     'app'
 ], function (angular, mocks, app) {
     'use strict';
-    describe('ProductService', function () {
+    describe('product service', function () {
         var me = this;
         beforeEach(module("hiking_food"))
         beforeEach(inject(function ($httpBackend, ProductService) {

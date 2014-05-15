@@ -13,7 +13,9 @@ define(['./module', '../app'], function (controllers) {
                 $scope.recipe.items = [];
                 $scope.recipe.autocalc = true;
             } else {
-                $scope.recipe = RecipeService.load($route.current.params.recipeId);
+                RecipeService.load($route.current.params.recipeId).then(function(data) {
+                    $scope.recipe = data;
+                });
             }
             $scope.save = function() {
                 $location.path(Urls.recipes);
