@@ -19,8 +19,12 @@ define([
         var ProductListController;
         var User;
         var ProductService = {
-            totalCount: function (success, fail) {
-                success({count: 10});
+            totalCount: function () {
+                return {
+                    then: function (callback) {
+                        callback({count: 10});
+                    }
+                }
             },
             getPage: function (pageNumber, pageSize) {
                 var result = [];

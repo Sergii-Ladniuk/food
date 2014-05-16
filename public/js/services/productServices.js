@@ -34,14 +34,12 @@ define(['./module', '../app'], function (services) {
                     });
                     return delay.promise;
                 },
-                totalCount: function (success, fail) {
+                totalCount: function () {
+                    var q = $q.defer();
                     $http.get('/count/products').then(function (res) {
-                        if (res.data.status === 'ok') {
-                            success(res.data);
-                        } else {
-                            fail(res);
-                        }
-                    }, fail);
+                        q.resolve(res.data);
+                    });
+                    return q.promise;
                 },
                 getPage: function (pageNumber, pageSize) {
                     var deferred = $q.defer();

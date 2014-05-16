@@ -374,24 +374,54 @@ define([
     })
     describe('recipe list controller', function () {
         var me = this;
-        beforeEach(module("hiking_food"))
-        beforeEach(inject(function ($rootScope, $controller) {
-            me.scope = $rootScope.$new();
+        beforeEach(function () {
             me.User = jasmine.createSpyObj('User', ['getUserName', 'isModerator']);
-            me.RecipeService = jasmine.createSpyObj('RecipeService', ['getPage']);
-
-            me.RecipeListController = $controller('RecipeListController', {
-                $scope: me.scope,
-                RecipeService: me.RecipeService,
-                User: me.User
+            module("hiking_food")
+            module(function ($provide) {
+                $provide.value('User', me.User)
             })
-        }))
+            inject(function ($rootScope, $controller, $q, _$timeout_) {
+                me.scope = $rootScope.$new();
+                me.RecipeService = jasmine.createSpyObj('RecipeService', ['getPage', 'totalCount']);
+                me.RecipeService.getPage.andReturn($q.when({page: "dummy"}));
+                me.RecipeService.totalCount.andReturn($q.when({count: 18}));
+                me.timeout = _$timeout_;
+
+                me.RecipeListController = $controller('RecipeListController', {
+                    $scope: me.scope,
+                    RecipeService: me.RecipeService
+                })
+            })
+        })
         it('should have default page size', function () {
             expect(me.scope.pageSize).toBe(20);
         })
         it('should have default max page count', function () {
             expect(me.scope.maxPageCount).toBe(5);
         })
-
+        it('should call service total count', function () {
+            expect(me.RecipeService.totalCount).toHaveBeenCalled();
+            me.timeout.flush();
+            expect(me.scope.totalCount).toBe(18);
+        })
+        it('should call service.getPage on init', function () {
+            expect(me.RecipeService.getPage).toHaveBeenCalledWith(1, 20);
+            me.timeout.flush();
+            expect(me.scope.recipes.page).toBe('dummy');
+        })
+        it('should call service.getPage on page selected', function () {
+            me.scope.pageSelected(3);
+            expect(me.RecipeService.getPage).toHaveBeenCalledWith(3, 20);
+        })
+        it('should call isModerator and getUserName on can edit', function () {
+            me.scope.canEdit({owner: 'u'});
+            expect(me.User.isModerator).toHaveBeenCalled();
+            expect(me.User.getUserName).toHaveBeenCalled();
+        })
+        it('should call isModerator and getUserName on can delete', function () {
+            me.scope.canDelete({owner: 'u'});
+            expect(me.User.isModerator).toHaveBeenCalled();
+            expect(me.User.getUserName).toHaveBeenCalled();
+        })
     })
 })

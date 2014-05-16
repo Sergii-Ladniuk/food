@@ -5,7 +5,7 @@ define(['./module', '../app'], function (controllers) {
             $scope.pageSize = 9;
             $scope.maxPageCount = 5;
 
-            PagingHandler($scope, ProductService);
+            PagingHandler($scope, ProductService, 'products');
         })
         .controller('NewProductController', function ($scope, $location, Product, User, Urls) {
 //            $scope.alerts = [];

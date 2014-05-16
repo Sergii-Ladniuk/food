@@ -62,9 +62,11 @@ define(['./module', '../app'], function (controllers) {
                 })
             }
         })
-        .controller('RecipeListController', function ($scope, RecipeService, User) {
+        .controller('RecipeListController', function ($scope, RecipeService, PagingHandler) {
             $scope.pageSize = 20;
             $scope.maxPageCount = 5;
+
+            PagingHandler($scope, RecipeService, 'recipes');
 
         })
 });
