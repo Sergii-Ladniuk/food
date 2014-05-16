@@ -18,7 +18,7 @@ define([
 
         var ProductListController;
         var User;
-        var ProductListLoader = {
+        var ProductService = {
             totalCount: function (success, fail) {
                 success({count: 10});
             },
@@ -31,7 +31,7 @@ define([
                     };
                 }
                 return {
-                    then : function(callback) {
+                    then: function (callback) {
                         callback(result);
                     }
                 }
@@ -40,19 +40,26 @@ define([
 
         var scope;
 
-        beforeEach(module("hiking_food"))
-
-        beforeEach(inject(function ($rootScope, $controller) {
-            scope = $rootScope.$new();
+        beforeEach(function () {
             User = {};
-            ProductListController = $controller('ProductListController', {
-                $scope: scope,
-                ProductListLoader: ProductListLoader,
-                User: User,
-                Urls: Urls,
-                $location: location
+
+            module("hiking_food")
+
+            module(function ($provide) {
+                $provide.value('User', User);
             })
-        }))
+
+            inject(function ($rootScope, $controller) {
+                scope = $rootScope.$new();
+
+                ProductListController = $controller('ProductListController', {
+                    $scope: scope,
+                    ProductService: ProductService,
+                    Urls: Urls,
+                    $location: location
+                })
+            })
+        })
 
         it('should exists', function () {
             expect(ProductListController).toBeDefined();

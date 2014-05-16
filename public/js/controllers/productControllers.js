@@ -1,33 +1,11 @@
 define(['./module', '../app'], function (controllers) {
     'use strict';
     controllers
-        .controller('ProductListController', function ($scope, ProductListLoader, User, Urls) {
+        .controller('ProductListController', function ($scope, ProductService, Urls, PagingHandler) {
             $scope.pageSize = 9;
             $scope.maxPageCount = 5;
-            $scope.pageSelected = function(page) {
-                $scope.currentPage = page;
-                ProductListLoader.getPage($scope.currentPage, $scope.pageSize).then(function(res) {
-                    $scope.products = res;
-                });
-            };
-            $scope.pageSelected(1);
-            ProductListLoader.totalCount(
-                function success(res) {
-                    $scope.totalCount = res.count;
-                }, function fail() {
-                    // todo
-                }
-            );
-            $scope.removeProduct = function ($event, id) {
-                $event.preventDefault();
-                $scope.products.$remove({id: id}, function (product) {
-                    $location.path(Urls.products);
-                });
-            };
-            $scope.canEdit = function(product) {
-                return User.isModerator() || User.getUserName() === product.owner;
-            };
-            $scope.canDelete = $scope.canEdit;
+
+            PagingHandler($scope, ProductService);
         })
         .controller('NewProductController', function ($scope, $location, Product, User, Urls) {
 //            $scope.alerts = [];
@@ -48,7 +26,7 @@ define(['./module', '../app'], function (controllers) {
                 $location.path(Urls.products);
             };
         })
-        .controller('EditProductController', function ($scope, $location, product) {
+        .controller('EditProductController', function ($scope, $location, product, Urls) {
             $scope.product = product;
             $scope.save = function () {
                 $scope.product.$save(function (response) {

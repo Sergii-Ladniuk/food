@@ -329,7 +329,6 @@ define([
 
     describe('edit existing recipe controller: ', function () {
 
-        var NewRecipeController;
         var EditRecipeController;
         var me = this;
 
@@ -372,5 +371,27 @@ define([
             expect(RecipeService.delete).toHaveBeenCalledWith('qwe');
         })
         editRecipeCommon(me);
+    })
+    describe('recipe list controller', function () {
+        var me = this;
+        beforeEach(module("hiking_food"))
+        beforeEach(inject(function ($rootScope, $controller) {
+            me.scope = $rootScope.$new();
+            me.User = jasmine.createSpyObj('User', ['getUserName', 'isModerator']);
+            me.RecipeService = jasmine.createSpyObj('RecipeService', ['getPage']);
+
+            me.RecipeListController = $controller('RecipeListController', {
+                $scope: me.scope,
+                RecipeService: me.RecipeService,
+                User: me.User
+            })
+        }))
+        it('should have default page size', function () {
+            expect(me.scope.pageSize).toBe(20);
+        })
+        it('should have default max page count', function () {
+            expect(me.scope.maxPageCount).toBe(5);
+        })
+
     })
 })

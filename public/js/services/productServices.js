@@ -4,8 +4,27 @@ define(['./module', '../app'], function (services) {
         .factory('Product', function ($resource) {
             return $resource('/products/:id', {id: '@id'}, {save: {method: 'POST'}});
         })
-        .factory('ProductListLoader', function (Product, $q, $http) {
+        .factory('ProductLoader', function (Product, $route, $q) {
+            return function () {
+                var delay = $q.defer();
+                Product.get({id: $route.current.params.productId}, function (product) {
+                    delay.resolve(product);
+                }, function () {
+                    delay.reject('Unable to get product');
+                });
+                return delay.promise;
+            };
+        })
+        .factory('ProductService', function (Product, $q, $http) {
             return {
+                search: function (column, q, size, callback) {
+                    Product.query({
+                        "column": column,
+                        "pageNumber": 1,
+                        "pageSize": size,
+                        "q": q
+                    }, callback);
+                },
                 list: function () {
                     var delay = $q.defer();
                     Product.query(function (products) {
@@ -37,29 +56,6 @@ define(['./module', '../app'], function (services) {
                         }
                     );
                     return deferred.promise;
-                }
-            };
-        })
-        .factory('ProductLoader', function (Product, $route, $q) {
-            return function () {
-                var delay = $q.defer();
-                Product.get({id: $route.current.params.productId}, function (product) {
-                    delay.resolve(product);
-                }, function () {
-                    delay.reject('Unable to get product');
-                });
-                return delay.promise;
-            };
-        })
-        .factory('ProductService', function (Product) {
-            return {
-                search: function (column, q, size, callback) {
-                    Product.query({
-                        "column": column,
-                        "pageNumber": 1,
-                        "pageSize": size,
-                        "q": q
-                    }, callback);
                 }
             }
 
