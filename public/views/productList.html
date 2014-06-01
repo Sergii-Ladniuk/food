@@ -1,5 +1,9 @@
 <div class="col3-list-item">
     <div class="btn-group btn-panel">
+        <div ng-show="!user.isLoggedIn()">
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <span class="alert-warning">{{'login-warn-products'|localize}}</span>
+        </div>
         <a class="btn btn-primary" ng-href="/#/newProduct" id="new-product-btn" ng-show="user.isLoggedIn()">{{"New Product"|localize}}</a>
     </div>
     <div>

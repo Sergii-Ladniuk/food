@@ -357,6 +357,43 @@ describe('Product API : ', function () {
             );
         });
 
+        it('#list regex', function (done) {
+            ProductResource.list({
+                    query: {
+                        column: 'title',
+                        q: 'dummy1'
+                    }
+                },
+                response(function (data) {
+                        console.log(data);
+                        console.log(data.length);
+                        should.exist(data);
+                        data.length.should.equal(11);
+                        done();
+                    }
+                )
+            )
+        })
+
+        it('#list regex with desired', function (done) {
+            ProductResource.list({
+                    query: {
+                        column: 'title',
+                        q: 'y1',
+                        desired: 10
+                    }
+                },
+                response(function (data) {
+                        console.log(data);
+                        console.log(data.length);
+                        should.exist(data);
+                        data.length.should.equal(11);
+                        done();
+                    }
+                )
+            )
+        })
+
         after(function (done) {
             db.dropCollection('products', done);
         });

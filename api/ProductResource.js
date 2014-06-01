@@ -9,25 +9,6 @@ ProductResource = GenericResource.build(ProductModel, {
     id: '_id'
 });
 
-var isOwnerOrModerator = function (request, response, next) {
-    if (request.isAuthenticated()) {
-        if (request.user.group === 'admin') {
-            next();
-        } else {
-            ProductModel.findOne({_id: request.params.id || request.body._id}, function(err, product) {
-                if (!product || product.owner === request.user.username) {
-                    next();
-                }
-            });
-        }
-    } else {
-        response.send(401);
-    }
-};
-
-ProductResource.canEdit = isOwnerOrModerator;
-ProductResource.canDelete = isOwnerOrModerator;
-
 ProductResource.import = function (request, response) {
     console.log('importing from ' + request.files.uploadedFile.path);
     var parsedJSON = require(request.files.uploadedFile.path);

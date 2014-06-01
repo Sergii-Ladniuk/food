@@ -1,3 +1,147 @@
 <h3 class="custom-form-header">{{"Edit Recipe"|localize}} <span class="item-title">{{product.title}}</span></h3>
-<form name="editProductForm" id="editProductForm" class="form-horizontal" ng-submit="save()">
+<form name="recipeForm" id="recipeForm" class="form-horizontal" ng-submit="save()">
+
+
+    <div class="form-group">
+        <label class="control-label col-lg-3" for="recipe-title">{{'title'|localize}}:</label>
+
+        <div class="col-lg-5">
+            <input class="input-sm form-control" name="title" id="recipe-title" ng-model="recipe.title" required
+                   ng-maxlength="30" focus/>
+
+            <div class="label label-danger"
+                 ng-show="(recipeForm.title.$dirty || submitted) && recipeForm.title.$error.required">
+                {{'required'|localize}}
+            </div>
+            <div class="label label-danger"
+                 ng-show="(recipeForm.title.$dirty || submitted) && recipeForm.title.$error.maxlength">
+                {{'max length warn'|localize}} 30.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-3" for="recipe-title"
+               ng-show="recipe.items.length > 0">{{'items'|localize}}:</label>
+
+        <div class="col-lg-8">
+            <table class="table items-table">
+                <tbody>
+                <tr ng-repeat="item in recipe.items">
+                    <td>
+                        <div class="truncate250">{{item.title}}</div>
+                    </td>
+                    <td width="200px">
+                        <span class="input-group">
+                            <input class="form-control" name="itemAmount_{{item.title}}"
+                                   ng-model="item.amount" smart-float
+                                   required max="100000" width="80px" ng-change="onItemAmountChanged()"/>
+                            <span class="input-group-addon"> {{'gram'|localize}}</span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" tooltip="{{'remove'|localize}}"><span
+                                        class="glyphicon glyphicon-remove" ng-click="removeItem(item)"></span></button>
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-4 col-lg-offset-3">
+            <button class="btn btn-default" id="addItem" ng-click="showEditItemPanel()" ng-show="!editItemVisible">
+                {{'Add Item'|localize}}
+            </button>
+        </div>
+        <div class="col-lg-8 col-lg-offset-3">
+            <br>
+
+            <div class="panel panel-default" ng-show="editItemVisible">
+                <div class="panel-heading">{{'New Item'|localize}}</div>
+                <div class="panel-body">
+                    <ng-form name="newItemForm">
+                        <div class="form-group">
+                            <label class="control-label col-lg-3" for="recipe-title">{{'title'|localize}}:</label>
+
+                            <div class="col-lg-8">
+                                <script type="text/ng-template" id="product-dropdown-item.html">
+                                    <a>
+                                        <span bind-html-unsafe="match.model.title | typeaheadHighlight:query"></span>
+                                        <span>({{match.model.calories}} {{'ccal'|localize}})</span>
+                                    </a>
+                                </script>
+                                <input class="input-sm form-control" name="itemTitle" id="new-item-title"
+                                       ng-model="newItem.product" focus typeahead-editable="false"
+                                       typeahead="product.title for product in searchProduct($viewValue)"
+                                       typeahead-template-url="product-dropdown-item.html"
+                                       ng-required="editItemVisible" ng-maxlength="30"
+                                       ng-change="onItemTitleChanged()"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-3" for="recipe-title">{{'amount'|localize}}:</label>
+
+                            <div class="col-lg-8">
+                                <input class="input-sm form-control" name="itemAmount" id="item-amount" smart-float
+                                       ng-model="newItem.amount"
+                                       ng-required="editItemVisible" max="100000"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-8">
+                                <button type="button" class="btn btn-primary" id="item-add" ng-click="submitNewItem()">
+                                    {{'add'|localize}}
+                                </button>
+                                <button type="button" class="btn" id="item-close" ng-click="hideEditItemPanel()">
+                                    {{'close'|localize}}
+                                </button>
+                            </div>
+                        </div>
+                    </ng-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group" ng-repeat="field in fields">
+        <label class="control-label col-lg-3" for="recipe-{{field}}">{{field|localize}}:</label>
+
+        <div class="col-lg-5">
+            <ng-form name="genForm">
+                <input class="input-sm form-control" name="genField" id="recipe-{{field}}" ng-model="recipe[field]"
+                       required
+                       smart-float min="{{minValue}}" max="{{maxValue}}"/>
+
+                <div class="label label-danger"
+                     ng-repeat="error in ['required', 'bad-float', 'min-bound-0', 'max-bound-10000']"
+                     ng-show="showError(genForm.genField, '{{error}}')">
+                    {{error|localize}}
+                </div>
+            </ng-form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="description">{{"description"|localize}}:</label>
+
+        <div class="col-lg-8">
+            <textarea ng-model="recipe.description" class="description form-control input-sm" id="description"
+                      ng-maxlength="500"
+                      placeholder="{{'Product Description Placeholder'|localize}}"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-4">
+            <button type="submit" class="btn btn-primary" id="recipe-submit" ng-click="beforeSubmit()">
+                {{'save'|localize}}
+            </button>
+            <button type="button" class="btn" id="recipe-cancel" ng-click="cancel()">{{'cancel'|localize}}</button>
+        </div>
+    </div>
+
 </form>

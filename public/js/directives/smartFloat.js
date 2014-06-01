@@ -11,11 +11,11 @@ define(['./directives'], function (directives) {
                             if (value) {
                                 if (attrs.min) {
                                     var min = parseFloat(attrs.min);
-                                    ctrl.$setValidity('min-bound', value >= min);
+                                    ctrl.$setValidity('min-bound-' + min, value >= min);
                                 }
                                 if (attrs.max) {
                                     var max = parseFloat(attrs.max);
-                                    ctrl.$setValidity('max-bound', value <= max);
+                                    ctrl.$setValidity('max-bound-' + max, value <= max);
                                 }
                             }
                             return value;
@@ -23,14 +23,14 @@ define(['./directives'], function (directives) {
 
                         function verifyFloat() {
                             if (FLOAT_REGEXP.test(viewValue)) {
-                                ctrl.$setValidity('float', true);
+                                ctrl.$setValidity('bad-float', true);
                                 if (typeof viewValue === "number") {
                                     return viewValue;
                                 } else {
                                     return parseFloat(viewValue.replace(',', '.'));
                                 }
                             } else {
-                                ctrl.$setValidity('float', false);
+                                ctrl.$setValidity('bad-float', false);
                                 return undefined;
                             }
                         }

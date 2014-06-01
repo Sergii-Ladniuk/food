@@ -52,7 +52,11 @@ define([
             }, delete: function (id) {
 
             }, save: function (recipe) {
-
+                return {
+                    then: function(callback) {
+                        callback();
+                    }
+                }
             }
         };
     }
@@ -69,6 +73,21 @@ define([
         it('should define save', function () {
             expect(typeof scope.save).toBe('function');
         })
+        it('should be not marked submitted after init', function () {
+            scope.recipeForm = {
+                $invalid: false
+            };
+            expect(scope.submitted).toBeUndefined();
+        })
+        it('should be marked submitted after beforeSubmit()', function () {
+            scope.recipeForm = {
+                $invalid: false
+            };
+            scope.beforeSubmit();
+            scope.save();
+            expect(scope.submitted).toBeTruthy();
+            expect(scope.editItemVisible).toBeFalsy();
+        })
         it('should define delete', function () {
             expect(typeof scope.save).toBe('function');
         })
@@ -79,7 +98,7 @@ define([
             scope.cancel();
             expect(me.redirect).toBe('/recipes');
         })
-        it('search should call service', function () {
+        it('search should call service, return a promise, store results in scope.products in map (title, product)', function () {
             var f;
             ProductService.search = function (title, q, size, clb) {
                 f = clb;
@@ -87,10 +106,114 @@ define([
                     {title: 'q'}
                 ])
             }
-            spyOn(ProductService, 'search').andCallThrough();
-            scope.searchProduct('asd');
-            expect(ProductService.search).toHaveBeenCalledWith('title', 'asd', 10, f);
-            expect(scope.products[0].title).toBe('q');
+            var data = [
+                {
+                    title: 'qwe',
+                    calories: 100
+                },
+                {
+                    title: 'asd',
+                    calories: 12345
+                }
+            ];
+            var promise = jasmine.createSpyObj('Promise', ['then']);
+            promise.then.andCallFake(function (callback) {
+                callback(data);
+            })
+            spyOn(ProductService, 'search').andReturn(promise);
+            var result = scope.searchProduct('asd');
+            expect(result).toBe(promise);
+            expect(scope.products['qwe'].calories).toBe(100);
+            expect(scope.products['asd'].calories).toBe(12345);
+        })
+        it('should enable enter new item', function () {
+            expect(scope.editItemVisible).toBeUndefined();
+            scope.showEditItemPanel();
+            expect(scope.editItemVisible).toBeTruthy();
+            expect(scope.newItem).toBeDefined();
+            expect(scope.newItem).toNotBe(null);
+        })
+        it('should enable enter new item', function () {
+            scope.editItemVisible = false;
+            scope.hideEditItemPanel();
+            expect(scope.editItemVisible).toBeFalsy();
+            expect(scope.newItem).toBe(null);
+        })
+        describe('#submitNewItem', function () {
+            beforeEach(function () {
+                $('body').append($('<input id="new-item-title" value="qwe"/>'));
+
+                scope.newItemForm = {};
+                scope.newItemForm.itemTitle = {};
+                scope.newItemForm.itemAmount = {};
+                scope.newItemForm.itemTitle.$valid = true;
+                scope.newItemForm.itemAmount.$valid = true;
+                scope.recipe.items = [];
+                scope.products = {
+                    'qwe': {
+                        title: 'qwe',
+                        calories: 12,
+                        fats: 10,
+                        proteins: 123,
+                        carbs: 1
+                    }
+                }
+                var newItem = {
+                    title: 'qwe-modified',
+                    product: 'qwe-modified',
+                    amount: 1500,
+                    calories: 12
+                };
+                scope.newItem = newItem;
+            })
+            afterEach(function () {
+                $('#new-item-title').remove();
+            })
+            it('should reset newItem when submit new item', function () {
+                scope.submitNewItem();
+                expect(scope.newItem.title).toBeUndefined();
+            })
+            it('should take title from DOM by jquery', function () {
+                scope.submitNewItem();
+                expect(scope.recipe.items[0].title).toBe('qwe');
+            })
+            it('should copy amount', function () {
+                scope.submitNewItem();
+                expect(scope.recipe.items[0].amount).toBe(1500);
+            })
+            it('should copy nutrition facts', function () {
+                scope.submitNewItem();
+                expect(scope.recipe.items[0].proteins).toBe(123);
+                expect(scope.recipe.items[0].fats).toBe(10);
+                expect(scope.recipe.items[0].carbs).toBe(1);
+                expect(scope.recipe.items[0].calories).toBe(12);
+            })
+            it('should not copy _id', function () {
+                scope.submitNewItem();
+                expect(scope.recipe.items[0]._id).toBeUndefined();
+            })
+            it('should call #addItem', function () {
+                spyOn(scope, 'addItem').andCallThrough();
+                scope.submitNewItem();
+                expect(scope.addItem).toHaveBeenCalled();
+            })
+            it('should validate title when submit new item', function () {
+                scope.products = {};
+                var newItem = {};
+                scope.newItem = newItem;
+                spyOn(scope, 'addItem').andCallThrough();
+                scope.submitNewItem();
+                expect(scope.addItem).wasNotCalled();
+            })
+            it('should validate amount when submit new item', function () {
+                scope.newItemForm.itemAmount.$valid = false;
+                scope.recipe.items = [];
+                var newItem = {};
+                scope.newItem = newItem;
+                spyOn(scope, 'addItem').andCallThrough();
+                scope.submitNewItem();
+                expect(scope.addItem).wasNotCalled();
+            })
         })
         describe('form valid', function () {
             beforeEach(function () {
@@ -108,7 +231,7 @@ define([
             })
             it('save should call service', function () {
                 scope.recipe = {_id: 'asd'};
-                spyOn(RecipeService, 'save');
+                spyOn(RecipeService, 'save').andCallThrough();
                 scope.save();
                 expect(RecipeService.save).toHaveBeenCalledWith(scope.recipe);
             })
@@ -212,7 +335,8 @@ define([
             calories: 123.4,
             fats: 10,
             proteins: 20,
-            carbs: 30
+            carbs: 30,
+            amount: 100
         }
         var items3 = function () {
             return[
@@ -221,13 +345,15 @@ define([
                     calories: 123.4,
                     fats: 0,
                     proteins: 10,
-                    carbs: 20
+                    carbs: 20,
+                    amount: 100
                 },
                 {
                     calories: 123.4,
                     fats: 20,
                     proteins: 40,
-                    carbs: 50
+                    carbs: 50,
+                    amount: 100
                 }
             ]
         }
@@ -255,7 +381,8 @@ define([
                     calories: 123.4,
                     fats: 10,
                     proteins: 20,
-                    carbs: 30
+                    carbs: 30,
+                    amount: 100
                 }
             ];
             scope.calculate();
@@ -271,6 +398,66 @@ define([
             expect(scope.recipe.fats).toBe(0);
             expect(scope.recipe.proteins).toBe(0);
             expect(scope.recipe.carbs).toBe(0);
+            expect(scope.recipe.weight).toBe(0);
+        })
+        it('should properly calculate according to amount for one item', function () {
+            scope.recipe.items = [
+                {
+                    calories: 100,
+                    fats: 1000,
+                    proteins: 20,
+                    carbs: 50,
+                    amount: 20
+                }
+            ];
+            scope.calculate();
+            expect(scope.recipe.calories).toBe(20);
+            expect(scope.recipe.fats).toBe(200);
+            expect(scope.recipe.proteins).toBe(4);
+            expect(scope.recipe.carbs).toBe(10);
+        })
+        it('should properly calculate according to amount for several items', function () {
+            scope.recipe.items = [
+                {
+                    calories: 100,
+                    fats: 1000,
+                    proteins: 20,
+                    carbs: 50,
+                    amount: 20
+                },
+                {
+                    calories: 1,
+                    fats: 20,
+                    proteins: 5,
+                    carbs: 2,
+                    amount: 50
+                }
+            ];
+            scope.calculate();
+            expect(scope.recipe.calories).toBe(20.5);
+            expect(scope.recipe.fats).toBe(210);
+            expect(scope.recipe.proteins).toBe(6.5);
+            expect(scope.recipe.carbs).toBe(11);
+        })
+        it('should properly calculate total weight', function () {
+            scope.recipe.items = [
+                {
+                    calories: 100,
+                    fats: 1000,
+                    proteins: 20,
+                    carbs: 50,
+                    amount: 20
+                },
+                {
+                    calories: 1,
+                    fats: 20,
+                    proteins: 5,
+                    carbs: 2,
+                    amount: 50
+                }
+            ];
+            scope.calculate();
+            expect(scope.recipe.weight).toBe(70);
         })
         describe('auto-calculate on', function () {
             beforeEach(function () {
@@ -283,7 +470,8 @@ define([
                     calories: 123.4,
                     fats: 1,
                     proteins: 1,
-                    carbs: 1
+                    carbs: 1,
+                    amount: 100
                 });
                 expect(scope.recipe.calories).toBe(123.4 * 4);
                 expect(scope.recipe.fats).toBe(31);
@@ -309,7 +497,8 @@ define([
                     calories: 123.4,
                     fats: 1,
                     proteins: 1,
-                    carbs: 1
+                    carbs: 1,
+                    amount: 100
                 });
                 expect(scope.recipe.calories).toBe(123.4 * 3);
                 expect(scope.recipe.fats).toBe(30);
@@ -372,6 +561,7 @@ define([
         })
         editRecipeCommon(me);
     })
+
     describe('recipe list controller', function () {
         var me = this;
         beforeEach(function () {
@@ -422,6 +612,10 @@ define([
             me.scope.canDelete({owner: 'u'});
             expect(me.User.isModerator).toHaveBeenCalled();
             expect(me.User.getUserName).toHaveBeenCalled();
+        })
+        it('should define user, user.getUserName as it is used in UI', function() {
+            expect(me.scope.user).toBeDefined();
+            expect(typeof me.scope.user.getUserName).toBe('function');
         })
     })
 })

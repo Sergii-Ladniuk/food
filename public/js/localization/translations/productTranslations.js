@@ -44,6 +44,10 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "Per 100g": {
                 "en": "Nutrition Facts per 100g",
                 "ru": "Пищевая ценность на 100 грамм"
+            },
+            "login-warn-products" : {
+                "en": "Please login to access create your own products!",
+                "ru": "Пожалуйста, войдите в систему, чтобы создавать свои собственные продукты"
             }
         }
     });

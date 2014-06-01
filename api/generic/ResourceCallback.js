@@ -9,6 +9,7 @@ exports.Callbacks = {
                         console.log(err);
                         response.send(500);
                     } else {
+                        console.log(result);
                         response.send(result);
                     }
                 }

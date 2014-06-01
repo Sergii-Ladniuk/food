@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var products = require('./api/ProductResource').ProductResource;
 var users = require('./api/UserResource').UserResource;
+var recipes = require('./api/RecipeResource').RecipeResource;
 var auth = require('./api/Auth');
 
 var app = express();
@@ -47,14 +48,17 @@ app.get('/products', products.list);
 app.get('/products/:id', products.get);
 app.delete('/products/:id', products.canEdit, products.remove);
 app.delete('/collection/products', auth.isAdmin, products.deleteAllProducts);
-app.get('/count/products', products.count);
 
 app.get('/user/:id', users.get);
 app.get('/user', auth.isAdmin, users.list);
 app.post('/user', users.save);
-app.get('/count/user', auth.isAdmin, users.count);
 app.delete('/user/:id', auth.isAdmin, users.remove);
+app.get('/count/user', auth.isAdmin, users.count);
 
+app.post('/recipes', recipes.canEdit, recipes.save);
+app.get('/recipes', recipes.list);
+app.get('/recipes/:id', recipes.get);
+app.delete('/recipes/:id', recipes.canEdit, recipes.remove);
 
 app.post('/login',
     passport.authenticate('local', { successRedirect: '/#/'})

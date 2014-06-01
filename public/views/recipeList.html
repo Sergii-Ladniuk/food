@@ -1,3 +1,42 @@
-<a class="btn btn-primary" ng-href="/#/newRecipe">New Recipe</a>
-<ul class="main-list">
-</ul>
+<div ng-show="!user.isLoggedIn()">
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    <span class="alert-warning" id="login-warn">{{'login-warn-recipes'|localize}}</span>
+</div>
+<a class="btn btn-primary" ng-href="/#/newRecipe" ng-show="user.isLoggedIn()" id="new-recipe">New Recipe</a>
+<div>
+    <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
+                class="pagination-sm" on-select-page="pageSelected(page)"
+                boundary-links="true" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                previous-text="&lsaquo;"></pagination>
+</div>
+<div class="row">
+    <div style="margin: 14px">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{'title'|localize}}</th>
+                <th>{{'calories'|localize}}</th>
+                <th ng-show="user.isLoggedIn()">{{'Action'|localize}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="recipe in recipes">
+                <td><button type="button" class="truncate250 btn-link" ng-click="showViewDialog(recipe)">{{recipe.title}}</button></td>
+                <td>{{recipe.calories}}</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-default editBtn" ng-href="/#/editRecipe/{{recipe._id}}"
+                           tooltip="{{'edit'|localize}}" ng-show="canEdit(recipe)">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <button class="btn btn-default deleteBtn" ng-click="showDeleteDialog(recipe)"
+                                tooltip="{{'remove'|localize}}" ng-show="canDelete(recipe)">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

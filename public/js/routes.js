@@ -29,24 +29,28 @@ define(
                     }).when('/removeProduct/:productId', {
                         controller: 'RemoveProductController',
                         resolve: {
-                            product: ['ProductLoader', function (ProductLoader) {
+                            entity: ['ProductLoader', function (ProductLoader) {
                                 return new ProductLoader();
                             }]
                         },
-                        templateUrl: '/views/removeProductForm.html'
+                        templateUrl: '/views/removeForm.html'
                     }).when('/recipes', {
                         controller: 'RecipeListController',
                         templateUrl: '/views/recipeList.html'
                     }).when('/newRecipe', {
                         controller: 'EditRecipeController',
                         resolve: {
-                            isNew: function () {return true}
+                            isNew: function () {
+                                return true
+                            }
                         },
                         templateUrl: '/views/editRecipeForm.html'
                     }).when('/editRecipe/:recipeId', {
                         controller: 'EditRecipeController',
                         resolve: {
-                            isNew: function () {return false}
+                            isNew: function () {
+                                return false
+                            }
                         },
                         templateUrl: '/views/editRecipeForm.html'
                     }).when('/signup', {

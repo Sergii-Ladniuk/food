@@ -1,4 +1,3 @@
-var webdriver = require('selenium-webdriver');//.WebDriver.prototype;
 var productName = 'dummy product';
 exports.productName = productName;
 var HomePage = require('./pageobjects/homePage.js').HomePage;
@@ -20,13 +19,13 @@ var db = require('../../data/schema/DB.js').mangoose.connection.db;
 
 describe('Products: ', function () {
 
-        UserDao.save({
-            username: 'admin',
-            password: 'admin',
-            email: 'admin@mail.com',
-            group: 'admin'
-        }, function() {
-        });
+    UserDao.save({
+        username: 'admin',
+        password: 'admin',
+        email: 'admin@mail.com',
+        group: 'admin'
+    }, function () {
+    });
 
     beforeEach(function () {
         browser.get('http://localhost:3001/#/');
@@ -36,7 +35,7 @@ describe('Products: ', function () {
 //        HomePage.logout();
 //    });
 
-    it('login', function() {
+    it('login', function () {
         HomePage.loginAdmin();
     });
 
@@ -111,7 +110,7 @@ describe('Products: ', function () {
         expect(editProductPage.saveProduct.isEnabled()).toEqual(false);
     });
 
-    it('logout', function() {
+    it('logout', function () {
         HomePage.logout();
     });
 

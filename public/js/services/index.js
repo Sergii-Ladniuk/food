@@ -2,7 +2,8 @@ define([
         './productServices',
         './recipeServices',
         './adminServices',
-        './urls'
+        './urls',
+        './crudService'
     ], function () {
     }
 );

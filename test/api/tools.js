@@ -1,5 +1,8 @@
 var should = require('should');
 var db = require('../../data/schema/DB.js').mangoose.connection.db;
+var UserResource = require('../../api/UserResource').UserResource;
+var RecipeResource = require('../../api/RecipeResource').RecipeResource;
+var examples = require('./examples');
 
 exports.emptyRequest = function () {
     return {
@@ -62,7 +65,6 @@ exports.response = function (send) {
     (typeof send).should.equal('function');
     return {
         send: function (data) {
-            console.log(data);
             should.exist(data);
             send(data);
         }
@@ -70,19 +72,36 @@ exports.response = function (send) {
 };
 
 exports.spammer = function (Resource, dummyRequest) {
-    function spamProducts(current, limit, callback) {
+    function spam(current, limit, callback) {
         if (current < limit) {
             Resource.save(dummyRequest(current), exports.response(function () {
-                spamProducts(current + 1, limit, callback);
+                spam(current + 1, limit, callback);
             }));
         } else {
             callback();
         }
     };
     return function (limit, callback) {
-        spamProducts(0, limit, callback);
+        spam(0, limit, callback);
     };
 };
+
+exports.dummySaveUserRequest = function (index) {
+    return exports.usersRequest()
+        .withUserName('user' + index).withPassword('qwe')
+        .withGroup('gr').withEmail('qwe@asd.com');
+};
+exports.dummySaveRecipeRequest = function (index) {
+    return exports.recipeRequest()
+        .withRecipe(examples.goodRecipe());
+};
+
+// a function used to produce a lot of items in the database to test #list and #count
+// result is a function having params:
+// limit - how many items to be produced
+// callback to call when operation is done
+exports.spamUsers = exports.spammer(UserResource, exports.dummySaveUserRequest);
+exports.spamRecipes = exports.spammer(RecipeResource, exports.dummySaveRecipeRequest);
 
 exports.cleanup = function (collection) {
     return function (callback) {

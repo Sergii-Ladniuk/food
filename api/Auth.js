@@ -62,6 +62,24 @@ exports.auth = function (request, response, next) {
     }
 };
 
-exports.getCurrentUser = function(request, response) {
+exports.getCurrentUser = function (request, response) {
     response.send(request.isAuthenticated() ? request.user : '0');
 };
+
+exports.IsOwnerOrModerator = function (Model) {
+    return function (request, response, next) {
+        if (request.isAuthenticated()) {
+            if (request.user.group === 'admin' || request.user.group === 'moderator') {
+                next();
+            } else {
+                Model.findOne({_id: request.params.id || request.body._id}, function (err, entity) {
+                    if (!entity || entity.owner === request.user.username) {
+                        next();
+                    }
+                });
+            }
+        } else {
+            response.send(401);
+        }
+    }
+}

@@ -1,5 +1,6 @@
 exports.HomePage = {
     goProducts: element(by.id('go-products')),
+    goRecipes: element(by.id('go-recipes')),
     signin: element(by.id('signin')),
     login: element(by.id('userName')),
     password: element(by.id('password')),

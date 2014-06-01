@@ -9,11 +9,11 @@
 
             <div class="label label-danger"
                  ng-show="(signupForm.userName.$dirty || submitted) && signupForm.userName.$error.required">
-                Required
+                {{'required'|localize}}
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.userName.$dirty || submitted) && signupForm.userName.$error.maxlength">
-                Maximum length for this field is 30.
+                {{'max length warn'|localize}} 30.
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.userName.$dirty || submitted) && signupForm.userName.$error.exists">
@@ -26,16 +26,17 @@
         <label class="control-label col-lg-3" for="signup-email">Email:</label>
 
         <div class="col-lg-5">
-            <input type="email" class="input-sm form-control" id="signup-email" name="email" ng-model="user.email" required
+            <input type="email" class="input-sm form-control" id="signup-email" name="email" ng-model="user.email"
+                   required
                    ng-maxlength="50"/>
 
             <div class="label label-danger"
                  ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.required">
-                Required
+                {{'required'|localize}}
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.maxlength">
-                Maximum length for this field is 30.
+                {{'max length warn'|localize}} 30.
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.email.$dirty && submitted) && signupForm.email.$error.email">
@@ -49,17 +50,18 @@
         <label class="control-label col-lg-3" for="signup-password">Password:</label>
 
         <div class="col-lg-5">
-            <input type="password" class="input-sm form-control" id="signup-password" name="password" ng-model="user.password"
+            <input type="password" class="input-sm form-control" id="signup-password" name="password"
+                   ng-model="user.password"
                    required
                    ng-maxlength="30" ng-change="passwordChanged()"/>
 
             <div class="label label-danger"
                  ng-show="(signupForm.password.$dirty || submitted) && signupForm.password.$error.required">
-                Required
+                {{'required'|localize}}
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.password.$dirty || submitted) && signupForm.password.$error.maxlength">
-                Maximum length for this field is 30.
+                {{'max length warn'|localize}} 30.
             </div>
         </div>
     </div>
@@ -74,11 +76,11 @@
 
             <div class="label label-danger"
                  ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.required">
-                Required
+                {{'required'|localize}}
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.maxlength">
-                Maximum length for this field is 30.
+                {{'max length warn'|localize}} 30.
             </div>
             <div class="label label-danger"
                  ng-show="(signupForm.confirmPassword.$dirty || submitted) && signupForm.confirmPassword.$error.match">

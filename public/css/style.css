@@ -136,7 +136,7 @@ input.ng-invalid {
 
 .sidebar-nav li a:hover {
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     text-decoration: none;
 }
 
@@ -195,4 +195,20 @@ div > textarea.description {
     padding: 15px 15px 0px 15px;
     width: 350px;
     height: 160px;
+}
+
+.truncate250 {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.items-table td div {
+    margin-top: 4px;
+}
+
+.items-table td button {
+    height: 34px;
 }

@@ -40,13 +40,14 @@ define(['./module', '../app'], function (controllers) {
                 $location.path('/removeProduct/' + $scope.product._id);
             };
         })
-        .controller('RemoveProductController', function ($scope, $location, product, Urls) {
-            $scope.product = product;
+        .controller('RemoveProductController', function ($scope, $location, entity, Urls) {
+            $scope.entity = entity;
             $scope.cancel = function () {
                 $location.path(Urls.products);
             };
+            $scope.question = "Delete Product Warning";
             $scope.remove = function () {
-                $scope.product.$remove({id: $scope.product._id}, function (product) {
+                $scope.entity.$remove({id: $scope.entity._id}, function (product) {
                     $location.path(Urls.products);
                 });
             };

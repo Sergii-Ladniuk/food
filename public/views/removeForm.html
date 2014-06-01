@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{header|localize}}</h4>
+</div>
+<div class="modal-body" id="delete-product-question">
+    {{question|localize}} '{{entity.title}}'?
+</div>
+<div class="modal-footer">
+    <button type="button" id="delete" class="btn btn-primary" ng-click="remove()">{{"yes"|localize}}</button>
+    <button type="button" id="cancel" class="btn" ng-click="cancel()">{{"no"|localize}}</button>
+</div>
