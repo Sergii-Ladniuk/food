@@ -1,0 +1,11 @@
+<div ng-show="!user.isLoggedIn()">
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    <span class="alert-warning" id="login-warn">{{'login-warn-menus'|localize}}</span>
+</div>
+<a class="btn btn-primary" ng-href="/#/menu/new/general" ng-show="user.isLoggedIn()" id="new-menu">{{'New Menu'|localize}}</a>
+<div>
+    <pagination total-items="totalCount" page="bigCurrentPage" max-size="maxPageCount" items-per-page="pageSize"
+                class="pagination-sm" on-select-page="pageSelected(page)"
+                boundary-links="true" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                previous-text="&lsaquo;"></pagination>
+</div>

@@ -53,6 +53,25 @@ define(
                             }
                         },
                         templateUrl: '/views/editRecipeForm.html'
+                    }).when('/menus', {
+                        controller: 'MenuListController',
+                        templateUrl: '/views/menu/menuList.html'
+                    }).when('/menu/new/general', {
+                        controller: 'MenuGeneralStepController',
+                        templateUrl: '/views/menu/menuGeneral.html',
+                        resolve: {
+                            isNew: function () {
+                                return true
+                            }
+                        }
+                    }).when('/menu/edit/day/:day', {
+                        controller: 'MenuDayController',
+                        templateUrl: '/views/menu/menuDay.html',
+                        resolve: {
+                            day: function($route) {
+                                return parseInt($route.current.params.day)
+                            }
+                        }
                     }).when('/signup', {
                         controller: 'SignupController',
                         templateUrl: '/views/signup.html'
@@ -62,8 +81,10 @@ define(
                     }).when('/error', {
                         controller: 'ErrorController',
                         templateUrl: '/views/error.html'
-                    })
-                    .otherwise({ redirectTo: '/'});
+                    }).when('/menu/edit/review', {
+                        controller: 'MenuReviewController',
+                        templateUrl: '/views/menu/menuReview.html'
+                    }).otherwise({ redirectTo: '/error?status=404'});
 
                 $httpProvider.responseInterceptors.push(function ($q, $location) {
                     return function (promise) {

@@ -1,0 +1,45 @@
+<h3 class="custom-form-header">{{"day"|localize}}
+    <span class="item-title" id="currentDay">{{day+1}}</span> ({{"total"|localize}}
+    <span id="totalDays">{{menu.dayNumber}}</span>)
+</h3>
+
+<form name="menuForm" id="menuForm" class="form-horizontal" ng-submit="next()">
+    <div class="form-group">
+        <div class="col-lg-12">
+            <accordion close-others="false">
+                <accordion-group heading="{{meal.name}}" is-open="$index === 0"
+                                 ng-repeat="meal in meals">
+                    <div ng-controller="MealDishEntryController">
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-primary" id="addDish" ng-click="addDish(meal)">
+                                    <span class="glyphicon glyphicon-plus"></span>&nbsp{{'addMeal'|localize}}
+                                </button>
+                            </div>
+                        </div>
+                        <entry-field field="title" type="recipe" entity="dish" ng-repeat="dish in meal.dishes"
+                                     index="{{$index}}" on-entity-select="recalculate(meal)"></entry-field>
+                        <meal-facts entity="mealStatistics[$index]" ng-show="mealStatistics[$index]"
+                                    caption="totalForMeal"></meal-facts>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-12">
+            <meal-facts entity="totalStatistics" ng-show="totalStatistics" caption="totalForDay"></meal-facts>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-8">
+            <button type="submit" class="btn btn-primary" id="next" ng-click="beforeSubmit()" ng-show="day < menu.dayNumber - 1">
+                {{'next'|localize}}
+            </button>
+            <button type="submit" class="btn btn-primary" id="review" ng-click="review()" ng-show="day == menu.dayNumber - 1">
+                {{'review'|localize}}
+            </button>
+        </div>
+    </div>
+</form>

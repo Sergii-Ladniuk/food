@@ -1,3 +1,4 @@
+'use strict';
 define(['./directives'], function (directives) {
     directives
         .directive('smartFloat', function () {
@@ -8,14 +9,16 @@ define(['./directives'], function (directives) {
                     ctrl.$parsers.unshift(function (viewValue) {
 
                         function verifyBounds(value) {
-                            if (value) {
+                            if (value || value === '0' || value === 0) {
                                 if (attrs.min) {
                                     var min = parseFloat(attrs.min);
                                     ctrl.$setValidity('min-bound-' + min, value >= min);
+                                    ctrl.$setValidity('min-bound', value >= min);
                                 }
                                 if (attrs.max) {
                                     var max = parseFloat(attrs.max);
                                     ctrl.$setValidity('max-bound-' + max, value <= max);
+                                    ctrl.$setValidity('max-bound', value <= max);
                                 }
                             }
                             return value;

@@ -34,7 +34,10 @@ require.config({
         'base/test/front/testProductControllers.js',
         'base/test/front/testRecipeControllers.js',
         'base/test/front/testProductService.js',
-        'base/test/front/testRecipeService.js'
+        'base/test/front/testRecipeService.js',
+        'base/test/front/testMenuControllers.js',
+        'base/test/front/testValidationWarnDirective.js',
+        'base/test/front/testMenuService.js'
     ],
     callback: window.__karma__.start
 });

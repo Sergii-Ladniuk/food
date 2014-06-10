@@ -1,4 +1,4 @@
-define(['./module', '../app'], function (controllers) {
+define(['./module', '../app', '../utils/utils'], function (controllers) {
     'use strict';
 
     var fields = ['calories', 'proteins', 'carbs', 'fats', 'weight'];
@@ -21,14 +21,6 @@ define(['./module', '../app'], function (controllers) {
                     answer [p] = obj[p];
                 })
                 return answer;
-            }
-
-            function array2map(p, arr) {
-                var result = {};
-                arr.forEach(function (item) {
-                    result[item[p]] = item;
-                })
-                return result
             }
 
             $scope.maxValue = 10000;

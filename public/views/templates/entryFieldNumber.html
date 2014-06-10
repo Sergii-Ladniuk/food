@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label class="control-label col-lg-4" for="{{field}}">{{field|localize}}:</label>
+    <div class="col-lg-5">
+        <input class="input-sm form-control" name="{{field}}" id="{{field}}" ng-model="entity[field]"
+               ng-required="{{required}}" smart-float
+               max="{{max}}" min="{{min}}" ng-focus="focus"/>
+        <validation-warn target="number" ctrl="{{field}}"></validation-warn>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="form-group" ng-repeat="day in menu.days">
+    <div>
+        <h2>{{'day'|localize}} {{$index}}</h2>
+        <div class="col-lg-3" ng-repeat="meal in day.meals">
+            <h3></h3>
+        </div>
+    </div>
+</div>

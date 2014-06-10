@@ -1,0 +1,18 @@
+<div class="form-group">
+    <script type="text/ng-template" id="recipe-dropdown-item.html">
+        <a>
+            <span bind-html-unsafe="match.model.title | typeaheadHighlight:query"></span>
+            <span> : </span>
+            <meal-facts entity="match.model"></meal-facts>
+        </a>
+    </script>
+
+    <div class="col-lg-5">
+        <input class="input-sm form-control" name="dish-{{index}}" id="dish-{{index}}"
+               ng-model="entity.title" typeahead-editable="false"
+               typeahead="entity.title for entity in search($viewValue)"
+               typeahead-template-url="recipe-dropdown-item.html" typeahead-append-to-body="true"
+               ng-required="required" ng-maxlength="30"
+               ng-change="onChanged()" typeahead-on-select="onSelect($item, $model, $label)"/>
+    </div>
+</div>

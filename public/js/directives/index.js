@@ -1,4 +1,8 @@
 define([
-        './smartFloat'
+        './smartFloat',
+        './entryField',
+        './autoFillSync',
+        './mealFacts',
+        './validationWarn'
     ], function() {}
 );

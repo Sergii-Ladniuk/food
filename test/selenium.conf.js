@@ -3,5 +3,5 @@
 
 exports.config = {
     seleniumAddress: 'http://localhost:9515/',
-    specs: ['myTest.js', 'e2e/*RecipeTest.js']
+    specs: ['myTest.js', 'e2e/*MenuTest.js']
 }

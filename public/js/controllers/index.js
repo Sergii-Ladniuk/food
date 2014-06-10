@@ -5,6 +5,7 @@ define([
         './loginController',
         './mainController',
         './recipeControllers',
+        './menuControllers',
         './errorController',
         './generic/pagingHandler'
     ], function () {

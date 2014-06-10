@@ -71,12 +71,30 @@ define(['angular', './translationModule'], function (ng, module) {
             }, "min-bound-0": {
                 "ru": "Минимальное допустимое значение 0",
                 "en": "Minimum value is 0"
+            }, "min-bound": {
+                "ru": "Минимальное допустимое значение ",
+                "en": "Minimum value is "
             }, "max-bound-10000": {
                 "en": "Maximum value is 10000",
                 "ru": "Максимальное допустимое значение 10000"
+            }, "max-bound-100": {
+                "en": "Maximum value is 100",
+                "ru": "Максимальное допустимое значение 100"
+            }, "max-bound": {
+                "en": "Maximum value is ",
+                "ru": "Максимальное допустимое значение "
+            }, "maxlength": {
+                "en": "Maximum length is",
+                "ru": "Максимальная допустимая длина для этого поля"
             }, "Action": {
                 "en": "Action",
                 "ru": "Действие"
+            }, "next": {
+                "en": "Next",
+                "ru": "Далее"
+            }, "review": {
+                "en": "Review",
+                "ru": "Проверка"
             }
         }
     });

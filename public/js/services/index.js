@@ -2,8 +2,10 @@ define([
         './productServices',
         './recipeServices',
         './adminServices',
+        './menuService',
         './urls',
-        './crudService'
+        './crudService',
+        './common/LocalStorageService'
     ], function () {
     }
 );

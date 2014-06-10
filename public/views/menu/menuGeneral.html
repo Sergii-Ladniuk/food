@@ -1,0 +1,25 @@
+<h3 class="custom-form-header">{{"Edit Menu"|localize}} <span class="item-title">{{menu.title}}</span></h3>
+<form name="menuForm" id="menuForm" class="form-horizontal" ng-submit="next()">
+
+    <entry-field field="title" type="name" entity="menu"></entry-field>
+    <entry-field field="memberNumber" type="number" entity="menu" min="1"></entry-field>
+    <entry-field field="dayNumber" type="number" entity="menu" min="1"></entry-field>
+
+    <div class="form-group">
+        <label class="control-label col-lg-4" for="meals">{{'meals'|localize}}:</label>
+        <span class="control-label col-lg-5" id="meals">{{printMeals()}}</span>
+        <div class="col-lg-3">
+            <button class="btn"><span class="glyphicon glyphicon-edit" tooltip="{{'edit'|localize}}"></span></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-4">
+            <button type="submit" class="btn btn-primary" id="menu-submit" ng-click="beforeSubmit()">
+                {{'next'|localize}}
+            </button>
+            <button type="button" class="btn" id="menu-cancel" ng-click="cancel()">{{'cancel'|localize}}</button>
+        </div>
+    </div>
+
+</form>
